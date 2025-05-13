@@ -1,0 +1,32 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Layout from "./Layout";
+import Notfound from "./pages/Not-found";
+import Home from "./pages/Home";
+import "./index.css";
+import Signup from "./pages/Signup";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
+import Login from "./pages/Login";
+
+function App() {
+  return (
+    <BrowserRouter>
+    <Provider store={store}>
+
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home/>} />
+        <Route path="cart" element={<div className="p-4">Cart</div>} />
+        <Route path="register" element={<div className="p-4">Register</div>} />
+        <Route path="event/:id" element={<div className="p-4">Event ID</div>} />
+        <Route path="*" element={<Notfound/>} />
+      </Route>
+      <Route path="/Signup" element={<Signup/>} />
+      <Route path="login" element={ <Login/> } />
+    </Routes>
+    </Provider>
+    </BrowserRouter>
+  );
+}
+
+export default App;
