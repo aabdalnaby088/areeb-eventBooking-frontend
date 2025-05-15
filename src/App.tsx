@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {  HashRouter, Route, Routes } from "react-router-dom";
 import Layout from "./Layout";
 import Notfound from "./pages/Not-found";
 import Home from "./pages/Home";
@@ -17,7 +17,7 @@ import Admin from "./pages/Admin";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
     <ReactQueryProvider>
       <Toaster position="top-center" reverseOrder={false} />
     <Provider store={store}>
@@ -38,7 +38,7 @@ function App() {
     </Routes>
     </Provider>
     </ReactQueryProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
