@@ -23,6 +23,8 @@ useEffect(() => {
       0
     );
     setCartCount(totalQuantity);
+  }else{
+    setCartCount(0);
   }
 }, [cart.data]);
 
