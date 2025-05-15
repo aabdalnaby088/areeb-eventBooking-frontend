@@ -63,10 +63,17 @@ const isInCart = useMemo(() => {
               {data?.venue}
             </div>
 
-            <a href={'#booking'} className="flex items-center mt-7 gap-2 bg-[#1D2134] text-white text-[20px] font-medium px-6 py-4 rounded-full shadow-md hover:opacity-90 transition w-fit">
+            <button 
+            onClick={() => {
+            const element = document.getElementById("booking");
+            if (element) {
+              element.scrollIntoView({ behavior: "smooth" });
+            }
+            }}
+             className="flex items-center mt-7 gap-2 bg-[#1D2134] text-white text-[20px] font-medium px-6 py-4 rounded-full shadow-md hover:opacity-90 transition w-fit">
               <Ticket size={35} />
              { isInCart ? 'Booked' : 'Book Now'}
-            </a>
+            </button>
           </div>
 
 
