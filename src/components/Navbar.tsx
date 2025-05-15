@@ -254,7 +254,7 @@ useEffect(() => {
 
             <button className="flex items-center space-x-2 hover:text-black"  onClick={() => dispatch(logoutUser())}>
               <LogOut size={30} className="text-[#4B4B4B] hover:text-red-500 cursor-pointer" />
-              <span>Profile</span>
+              <span>Logout</span>
             </button>
           </div>
         </div>
