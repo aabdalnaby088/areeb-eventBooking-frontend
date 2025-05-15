@@ -4,6 +4,11 @@ import SlidingBtns from './SlidingBtns';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import CategoryCard from './CategoryCard';
+import musicCategory from '/MusicCategory.jpg';
+import sportsCategory from '/sportCategory.jpg';
+import techCategory from '/techCategory.jpg';
+import artCategory from '/artCategory.jpg';
+import businessCategory from '/businessCategory.jpg';
 export default function CategorySlider() {
   return (
     <div className="flex flex-col justify-center md:items-start items-center relative" >
@@ -26,19 +31,19 @@ export default function CategorySlider() {
           className='w-full'
           >
         <SwiperSlide>
-            <CategoryCard category='Music' />
+            <CategoryCard image= {musicCategory} category='Music'/>
         </SwiperSlide>
         <SwiperSlide>
-            <CategoryCard category='Sports'/>
+            <CategoryCard image={sportsCategory} category='Sports'/>
         </SwiperSlide>
         <SwiperSlide>
-            <CategoryCard category='Art' />
+            <CategoryCard image= {techCategory} category='Tech'/>
         </SwiperSlide>
         <SwiperSlide>
-            <CategoryCard category='Business' />
+            <CategoryCard image= { artCategory} category='Art'/>
         </SwiperSlide>
         <SwiperSlide>
-            <CategoryCard category='Tech'/>
+            <CategoryCard category='Business' image={businessCategory}/>
         </SwiperSlide>
         
         

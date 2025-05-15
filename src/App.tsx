@@ -13,6 +13,7 @@ import EventDetails from "./pages/EventDetails";
 import Cart from "./pages/Cart";
 import Congratulations from "./components/Congratulations";
 import { Toaster } from 'react-hot-toast';
+import Admin from "./pages/Admin";
 
 function App() {
   return (
@@ -25,13 +26,13 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<Home/>} />
         <Route path="cart" element={<Cart/>} />
-        <Route path="register" element={<div className="p-4">Register</div>} />
         <Route path="event/:id" element={<EventDetails/>} />
         <Route path="events" element={<Events/>} />
         <Route path="events/:category" element={<Events/>} />
         <Route path="*" element={<Notfound/>} />
         <Route path="congratulations" element={<Congratulations/>} />
       </Route>
+        <Route path="Admin" element={<Admin/>} />
       <Route path="/Signup" element={<Signup/>} />
       <Route path="login" element={ <Login/> } />
     </Routes>

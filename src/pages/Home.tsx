@@ -59,7 +59,7 @@ export default function Home() {
 
           {/* for the paragraph */}
 
-          <div className="w-[55%] max-md:w-[100%]  max-md:text-center max-md:flex max-md:justify-center border-b-2 ">
+          <div className="w-[55%] max-md:w-[100%]  max-md:text-center max-md:flex max-md:justify-center border-b-2 pb-5 ">
           <p className=" text-[18px] text-[#353535] font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet felis sit amet nulla ultrices tincidunt. Proin porttitor, urna ac pretium pharetra, justo felis facilisis nulla, non blandit lorem turpis sed sapien. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices urna ac pretium pharetra, justo felis facilisis nulla, non blandit lorem turpis sed sapien. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices </p>
           </div>
 

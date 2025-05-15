@@ -3,16 +3,17 @@ import { Link } from "react-router-dom";
 
 type CategoryCardProps = {
   category:string,
+  image:string
 };
 
-export default function CategoryCard({category}:CategoryCardProps) {
+export default function CategoryCard({category, image}:CategoryCardProps) {
   return (
     <>
       <div className=" flex flex-col transform transition duration-300 hover:scale-105 hover:-translate-y-1 cursor-pointer">
         {/* Category Image */}
         <div className="relative w-[336px] h-[195px] rounded-es-[20px] rounded-ee-[20px] rounded-tl-[40px] rounded-tr-[40px]  ">
           <img
-            src="/ConcertCategory.png"
+            src= {image}
             alt="EventImage"
             className="object-cover"
           />

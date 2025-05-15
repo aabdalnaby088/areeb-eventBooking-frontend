@@ -32,6 +32,21 @@ export default function Cart() {
 
   return (
     <div className="flex flex-col justify-center items-center flex-wrap py-10 gap-5">
+
+      <div className=" flex justify-between w-full">
+
+        <div  className={`bg-[#ffffff] border border-[#1D2134] text-[#1D2134] rounded-xl text-center px-4 py-2 overflow-hidden ${totalPrice == 0 ? 'opacity-50 cursor-not-allowed': 'cursour-pointer'}`}>
+          Total Price: <span className=" text-red-500 font-medium">{totalPrice || 0}</span> 
+        </div>
+
+        <Link onClick={(e) => handleClick(e)}  to={'/congratulations'} className={`bg-[#1D2134] border border-[#1D2134] text-[#fff] rounded-xl text-center px-4 py-2 overflow-hidden ${totalPrice == 0 ? 'opacity-50 cursor-not-allowed': 'cursour-pointer'}`}>
+          Confirm Purchase
+        </Link>
+
+        </div>
+
+        {/* ******************************* */}
+
         <div className="flex justify-center items-center flex-wrap py-10 gap-5">
         {
           cart?.data ?
@@ -39,12 +54,15 @@ export default function Cart() {
                 <CartCard key={index} event={event.eventId} deleteOption={true} quantity={event.quantity}/>
             ))
           : 
-            <p>Your cart is empty</p>
+          <div>
+
+            <img src="/EmptyCart.png" className="w-full mb-5" alt=" empty cart" />
+            <p>Your cart is empty</p> 
+          
+            </div>
         }
         </div>
-        <Link onClick={(e) => handleClick(e)}  to={'/congratulations'} className={`bg-[#1D2134] text-white rounded-xl text-center px-4 py-2 overflow-hidden ${totalPrice == 0 ? 'opacity-50 cursor-not-allowed': 'cursour-pointer'}`}>
-          Total Price: {totalPrice || 0}
-        </Link>
+
     </div>
   )
 }

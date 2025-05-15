@@ -15,6 +15,7 @@ interface FormValues {
 const FormLogin = () => {
     const dispatch = useAppDispatch();
  const { loading } = useAppSelector((state) => state.user);
+
  const navigate = useNavigate();
 
   // Form validation schema
@@ -40,12 +41,20 @@ const FormLogin = () => {
         
       try{
         setSubmitting(true);
-        await dispatch(loginUser({
+        const userData = await dispatch(loginUser({
           email: values.email,
           password: values.password,
         })).unwrap();
         
-        navigate('/') 
+      const userRole = userData?.role || 'user';
+
+
+        // redirect to admin page if user is admin
+        if (userRole === 'admin') {
+          navigate('/Admin');
+        } else {
+          navigate('/');
+        } 
       } catch (error) {
         console.log(error);
         
