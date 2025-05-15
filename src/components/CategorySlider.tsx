@@ -26,38 +26,21 @@ export default function CategorySlider() {
           className='w-full'
           >
         <SwiperSlide>
-            <CategoryCard/>
+            <CategoryCard category='Music' />
         </SwiperSlide>
         <SwiperSlide>
-            <CategoryCard/>
+            <CategoryCard category='Sports'/>
         </SwiperSlide>
         <SwiperSlide>
-            <CategoryCard/>
+            <CategoryCard category='Art' />
         </SwiperSlide>
         <SwiperSlide>
-            <CategoryCard/>
+            <CategoryCard category='Business' />
         </SwiperSlide>
         <SwiperSlide>
-            <CategoryCard/>
+            <CategoryCard category='Tech'/>
         </SwiperSlide>
-        <SwiperSlide>
-            <CategoryCard/>
-        </SwiperSlide>
-        <SwiperSlide>
-            <CategoryCard/>
-        </SwiperSlide>
-        <SwiperSlide>
-            <CategoryCard/>
-        </SwiperSlide>
-        <SwiperSlide>
-            <CategoryCard/>
-        </SwiperSlide>
-        <SwiperSlide>
-            <CategoryCard/>
-        </SwiperSlide>
-        <SwiperSlide>
-            <CategoryCard/>
-        </SwiperSlide>
+        
         
     </Swiper>
         </div>

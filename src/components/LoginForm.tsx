@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useAppDispatch, useAppSelector } from '../hooks/redux.hooks';
 import { loginUser } from '../redux/userSlice'; 
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 // Define form values type
@@ -16,7 +16,6 @@ const FormLogin = () => {
     const dispatch = useAppDispatch();
  const { loading } = useAppSelector((state) => state.user);
  const navigate = useNavigate();
-   const location = useLocation(); // Specify the generic type
 
   // Form validation schema
   const validationSchema = Yup.object({

@@ -3,12 +3,15 @@ import CategorySection from "../sections/CategorySection";
 import EventsSection from "../sections/EventsSection";
 
 
+
 export default function Home() {
- 
+
+  
+  
   return (
-    <>
+    <div className="">
       {/* Hero section */}
-      <section className="mx-auto py-10 relative">
+      <section className="mx-auto py-10 relative ">
         <div className="relative py-10 ">
           {/* ******************************************************* */}
           {/* Text Section */}
@@ -118,6 +121,6 @@ export default function Home() {
 
       {/* Categories section */}
       <CategorySection/>
-    </>
+    </div>
   );
 }

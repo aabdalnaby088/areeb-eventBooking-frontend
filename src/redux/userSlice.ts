@@ -3,6 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import axios from '../api/axiosInstance';
 import type { User, LoginFormValues, SignupFormValues } from '../Types/user';
 import { jwtDecode } from 'jwt-decode';
+import toast from 'react-hot-toast';
 
 interface UserState {
   user: User | null;
@@ -39,24 +40,26 @@ export const loginUser = createAsyncThunk(
   async (values: LoginFormValues, { rejectWithValue }) => {
     try {
       const res = await axios.post('/user/signin', values);
-      const { data:token } = res.data;
-      
-      // Decode the token to get user info
+      const { data: token } = res.data;
+
       const decodedUser = jwtDecode<User>(token);
       const userWithToken = {
         ...decodedUser,
-        token
+        token,
       };
-      
-      // Store token in localStorage
+
       localStorage.setItem('token', token);
       
+      toast.success('Logged in successfully!');
       return userWithToken;
-    } catch (err: any) {      
-      return rejectWithValue(err.response?.data?.message || 'Login failed');
+    } catch (err: any) {
+      const message = err.response?.data?.message || 'Login failed';
+      toast.error(message);
+      return rejectWithValue(message);
     }
   }
 );
+
 
 export const signupUser = createAsyncThunk(
   'user/signup',
@@ -75,9 +78,17 @@ export const signupUser = createAsyncThunk(
       };
       
       localStorage.setItem('token', token);
+      
+      // Show success toast
+      toast.success('Signup successful! Welcome aboard!');
+      
       return userWithToken;
     } catch (err: any) {
-      return rejectWithValue(err.response?.data?.message || 'Signup failed');
+      // Show error toast
+      const errorMessage = err.response?.data?.message || 'Signup failed';
+      toast.error(errorMessage);
+      
+      return rejectWithValue(errorMessage);
     }
   }
 );
