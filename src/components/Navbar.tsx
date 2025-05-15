@@ -1,16 +1,30 @@
 
-import { useState } from 'react';
-import { Globe, Search, User, Menu, X, LogOut } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Globe, Search, Menu, X, LogOut, ShoppingCart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../hooks/redux.hooks';
 import { logoutUser } from '../redux/userSlice';
+import { useCart } from '../hooks/useCart';
 
 export default function Navbar() {
 const [isOpen, setIsOpen] = useState<boolean>(false);
 const [showLangDropdown, setShowLangDropdown] = useState<boolean>(false);
  const { user } = useAppSelector((state) => state.user);
 const dispatch = useAppDispatch();
-console.log(user);
+
+const [cartCount, setCartCount] = useState<number>(0);
+const cart = useCart();
+
+useEffect(() => {
+  if (cart.data?.data?.items) {
+    const totalQuantity = cart.data.data.items.reduce(
+      (acc: number, item: { quantity: number }) => acc + item.quantity,
+      0
+    );
+    setCartCount(totalQuantity);
+  }
+}, [cart.data]);
+
 
   return (
     <nav className="w-[95%] py-4 px-6 border-b-2">
@@ -35,10 +49,21 @@ console.log(user);
         {/* Desktop Icons */}
         <div className="hidden md:flex items-center space-x-4">
           { user ? 
+          <>
             <Link to="/events" className="text-[#4B4B4B] hover:text-black text-xl">
            Events
-          </Link> : 
+          </Link> 
+            <Link to="/cart" className="text-[#4B4B4B] hover:text-black text-xl relative">
+              <ShoppingCart size={30} />
+              <span className='absolute bottom-[60%] start-[80%] text-xs text-white bg-red-500 rounded-2xl px-1'>{cartCount}</span>
+          </Link> 
+          </>
+          
+          : 
           <>
+           <Link to="/events" className="text-[#4B4B4B] hover:text-black text-xl">
+           Events
+          </Link>
           <Link to="/login" className="text-[#4B4B4B] hover:text-black text-xl">
              <span className='px-4 py-2 rounded-xl shadow-lg border-1 text-[#FFF] bg-[#1D2134] focus:outline-[#1D2134] hover:bg-[#fff] hover:text-[#1D2134] transition-all duration-300'>
               Login
@@ -108,7 +133,35 @@ console.log(user);
 
           {/* Links */}
           <div className="px-4 flex flex-col space-y-2 text-[#4B4B4B]">
-            <Link to="/events" className="hover:text-black">Events</Link>
+             { user ? 
+          <>
+            <Link to="/events" className="text-[#4B4B4B] hover:text-black text-xl">
+           Events
+          </Link> 
+            <Link to="/cart" className="text-[#4B4B4B] hover:text-black text-xl relative">
+              <ShoppingCart size={30} />
+              <span className='absolute bottom-[60%] start-[10%] text-xs text-white bg-red-500 rounded-2xl px-1'>{cartCount}</span>
+          </Link> 
+          </>
+          
+          : 
+          <div className='flex flex-col gap-3'>
+           <Link to="/events" className="text-[#4B4B4B] hover:text-black text-xl">
+           Events
+          </Link>
+          <Link to="/login" className="text-[#4B4B4B] hover:text-black text-sm">
+             <span className='px-2 py-1 rounded-xl shadow-lg border-1 text-[#FFF] bg-[#1D2134] focus:outline-[#1D2134] hover:bg-[#fff] hover:text-[#1D2134] transition-all duration-300'>
+              Login
+            </span>
+          </Link>
+          <Link to="/Signup" className="text-[#4B4B4B] hover:text-black text-sm">
+             <span className='px-2 py-1 rounded-xl shadow-lg border-1 text-[#FFF] bg-[#1D2134] focus:outline-[#1D2134] hover:bg-[#fff] hover:text-[#1D2134] transition-all duration-300'>
+              Signup
+            </span>
+          </Link>
+          </div>
+
+          }
             
             {/* Language dropdown */}
             <div className="relative">
@@ -129,8 +182,8 @@ console.log(user);
               )}
             </div>
 
-            <button className="flex items-center space-x-2 hover:text-black">
-              <User size={20} />
+            <button className="flex items-center space-x-2 hover:text-black"  onClick={() => dispatch(logoutUser())}>
+              <LogOut size={30} className="text-[#4B4B4B] hover:text-red-500 cursor-pointer" />
               <span>Profile</span>
             </button>
           </div>

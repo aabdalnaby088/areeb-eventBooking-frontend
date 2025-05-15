@@ -4,7 +4,12 @@ import EventTicketCard from './EventTicketCard';
 import SlidingBtns from './SlidingBtns';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { useEvents } from '../hooks/useEvents';
+import Loader from './Loader';
 export default function HoteventSlider() {
+    const {data, isLoading} =useEvents();
+    
+    if(isLoading) return <Loader/>
   return (
     <div className="flex flex-col justify-center md:items-start items-center relative" >
     <SlidingBtns nav='3' />
@@ -25,24 +30,12 @@ export default function HoteventSlider() {
           modules={[Navigation]}
           className='w-full'
           >
-        <SwiperSlide>
-            <EventTicketCard/>
-        </SwiperSlide>
-        <SwiperSlide>
-            <EventTicketCard/>
-        </SwiperSlide>
-        <SwiperSlide>
-            <EventTicketCard/>
-        </SwiperSlide>
-        <SwiperSlide>
-            <EventTicketCard/>
-        </SwiperSlide>
-        <SwiperSlide>
-            <EventTicketCard/>
-        </SwiperSlide>
-        <SwiperSlide>
-            <EventTicketCard/>
-        </SwiperSlide>
+          {data?.map((event, index) => (
+            <SwiperSlide key={index}>
+              <EventTicketCard event={event}/>
+            </SwiperSlide>
+          ))}
+        
     </Swiper>
         </div>
   )

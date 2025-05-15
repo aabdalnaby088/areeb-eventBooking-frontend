@@ -1,52 +1,67 @@
 
-import { MapPin } from "lucide-react";
+import { Loader, MapPin } from "lucide-react";
 import styled from "styled-components";
-
-export default function CartCard() {
+import type { Event } from "../Types/event";
+import { Link } from "react-router-dom";  
+import { formatEgyptTime } from "../lib/FormateDate";
+import { calcPrice } from "../lib/calcPrice";
+import { useRemoveFromCart } from "../hooks/useRemoveFromCart";
+type cartCardProps = {
+  event:Event,
+  deleteOption?:true
+  quantity?:number
+};
+export default function CartCard( {event, deleteOption, quantity}:cartCardProps) {
+  const date = formatEgyptTime(event.date);
+  const {mutate: removeFromcart, isPending: isRemoving} = useRemoveFromCart();
+  const handleRemoveFromCart = () => {
+    removeFromcart(event._id);
+  }
   return (
-    <div className=" max-md:w-[350px]  w-[420px] bg-white rounded-[24px] border-2 border-[#1D2134] shadow-md p-4 pb-10 relative">
+    <div className=" max-md:w-[350px]  w-[420px] bg-white rounded-3xl border-2 border-[#1D2134] shadow-md p-4 pb-10 relative ">
       {/* Event Image */}
-      <div className="relative w-full h-[180px] rounded-[16px] overflow-hidden bg-black">
+      <Link to={`/event/${event._id}`} className="relative w-full h-[180px] rounded-[16px] overflow-hidden bg-black cursor-pointer">
         <img
-          src="/EventDetailsImage.png"
+          src= {event?.imageUrl}
           alt="Event"
-          className="object-cover h-full"
+          className="object-cover rounded-3xl"
         />
-      </div>
+      </Link>
 
       {/* Content */}
       <div className="flex justify-between items-center mt-4">
         {/* Left Side */}
-        <div>
-          <h3 className="text-[20px] font-bold text-[#1D2134]">
-            Redbull Jukebox
+        <div className= {`${deleteOption ? 'w-2/3' : 'w-full'}`}>
+          <h3 className={`text-[20px] font-bold text-[#1D2134] line-clamp-1`}>
+            {event.name}
           </h3>
-          <p className="text-[15px] text-[#1D2134] mt-2">30 May | 9:00pm</p>
+          <p className="text-[15px] text-[#1D2134] mt-2"> {date} </p>
           <div className="flex items-center text-[15px] text-[#1D2134] mt-2">
             <MapPin size={20} className="mr-1" />
-            Taj City
+            {event.venue}
           </div>
         </div>
 
         {/* Right Side */}
-        <div className="text-right">
-          <p className="text-[15px] text-[#1D2134] font-bold">Tickets: 2 </p>
+        { deleteOption && <div className="text-right">
+          <p className="text-[15px] text-[#1D2134] font-bold">Tickets: {quantity}</p>
           <p className="text-[15px] text-[#1D2134] font-bold">Total Price:</p>
-          <p className="text-[15px] font-bold text-red-500">1400 EGP</p>
+          <p className="text-[15px] font-bold text-red-500">{calcPrice(quantity!, event.price)} EGP</p>
         </div>
+      }
       </div>
 
       {/* Delete Button */}
 
-      <div className=" flex justify-end">
+      { deleteOption && <div className=" flex justify-end">
         <StyledWrapper>
-          <button className="button">
-            <svg viewBox="0 0 448 512" className="svgIcon">
+          <button className="button" onClick={handleRemoveFromCart}>
+            {isRemoving ? <Loader size={25} className="animate-spin" /> : <svg viewBox="0 0 448 512" className="svgIcon"> 
               <path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
-            </svg>
+            </svg>}
           </button>
         </StyledWrapper>
-      </div>
+      </div>}
     </div>
   );
 }

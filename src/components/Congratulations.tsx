@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function Congratulations() {
   return (
     <>
-      <div className=" max-md:w-[800px] max-md:h-[400px] max-md:py-6  w-[800px] h-[500px] rounded-4xl bg-white shadow-lg text-[#1D2134] flex flex-col justify-center items-center">
+      <div className=" max-md:w-[800px] max-md:h-[400px] max-md:py-6  h-[500px] rounded-4xl  text-[#1D2134] flex flex-col justify-center items-center  w-full">
         <div className="  w-[60%] text-center mx-auto">
           <h2 className=" max-md:text-[20px] max-md:leading-[28px] font-bold text-[30px] leading-[38px]">
             Congratulations You Booked Your Ticket Successfully
@@ -23,7 +23,7 @@ export default function Congratulations() {
           />
         </div>
 
-        <Link to="/home">
+        <Link to="/">
           <button className=" mt-5 rounded-4xl border-2 py-3 px-6 md:py-3 md:px-13 border-[#1D2134] text-base md:text-lg lg:text-xl font-bold  hover:bg-[#1D2134] hover:text-white transition-colors duration-200">
             Home
           </button>

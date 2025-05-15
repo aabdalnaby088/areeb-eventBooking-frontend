@@ -4,14 +4,16 @@ import Footer from "./components/Fotter";
 
 export default function Layout() {
   return (
-    
+    <>
     <div className="main-container m-auto w-[90%]">
             <Navbar />
-        <div>
+        <div >
             <Outlet />
         </div>
             <Footer/>
-    </div>
+            </div>
+
+    </>
    
     
   )

@@ -1,16 +1,59 @@
-"use client";
 
-import { useState } from "react";
-import { Plus, Minus } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Plus, Minus, Loader } from "lucide-react";
 import { Ticket } from "lucide-react";
-import React from "react";
+import { Link } from "react-router-dom";
+import { useAppSelector } from "../hooks/redux.hooks";
+import { useAddToCart } from "../hooks/useAddToCart";
+import type { Event } from "../Types/event";
+import { useCart } from "../hooks/useCart";
+import { useHandleCartQuantity } from "../hooks/useHandleCartQuantity";
 
-export default function EventBookingTicket() {
-  const [count, setCount] = useState(0);
+type EventBookingTicketProps = {
+  event: Event;
+};
 
-  const increase = () => setCount((prev) => prev + 1);
-  const decrease = () => setCount((prev) => (prev > 1 ? prev - 1 : 1));
+export default function EventBookingTicket({event} : EventBookingTicketProps) {
+const [cartCount, setCartCount] = useState<number>(0);
+const cart = useCart();
 
+useEffect(() => {
+  if (cart.data?.data?.items && event?._id) {
+    const cartItems = cart.data.data.items;
+    // Find the event in the cart
+    const foundItem = cartItems.find(
+      (item: { eventId: Event }) => item.eventId._id === event._id
+    );
+
+    if (foundItem) {
+      // Event is in cart, set its quantity
+      setCartCount(foundItem.quantity);
+    } else {
+      // Event not in cart
+      setCartCount(0);
+    }
+  }
+}, [cart.data, event]);
+
+const { mutate: removeFromcart, isPending: isRemoving } = useHandleCartQuantity();
+
+
+    const { mutate: addToCart, isPending: isAdding } = useAddToCart();
+
+    const handleRemoveFromCart = (quantity: number) => {
+      
+      removeFromcart({ eventId: event._id, newQuantity: quantity } );
+      setCartCount((prev) => (prev > 0 ? prev - 1 : 0))
+      
+    }
+
+    const handleAddToCart = () => {
+      
+      addToCart(event._id);
+       setCartCount((prev) => prev + 1);
+    };
+
+  const {user} = useAppSelector((state) => state.user);
   return (
     <>
       <div
@@ -24,28 +67,33 @@ export default function EventBookingTicket() {
           <div className="flex items-center gap-6 max-md:gap-3 ">
             {/* Minus Button */}
             <button
-              onClick={decrease}
-              className=" max-md:w-8 max-md:h-8  w-10 h-10 flex items-center justify-center bg-white rounded-full"
+            disabled={cartCount == 0 || isRemoving}
+              onClick={() => handleRemoveFromCart(cartCount-1)}
+              className={` max-md:w-8 max-md:h-8  w-10 h-10 flex items-center justify-center bg-white rounded-full  ${cartCount ==0 || isRemoving ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
             >
-              <Minus size={25} className="text-[#1D2134]" />
+              { isRemoving ? <Loader size={25} className="animate-spin" /> : <Minus size={25} className="text-[#1D2134]" />}
             </button>
 
             {/* Count */}
-            <span className="text-white text-4xl max-md:text-3xl font-bold">{count}</span>
-
+            <span className="text-white text-4xl max-md:text-3xl font-bold">{cartCount}</span>
             {/* Plus Button */}
             <button
-              onClick={increase}
-              className=" max-md:w-8 max-md:h-8   w-10 h-10 flex items-center justify-center bg-white rounded-full"
+              onClick={handleAddToCart}
+              className=" max-md:w-8 max-md:h-8   w-10 h-10 flex items-center justify-center bg-white rounded-full cursor-pointer"
             >
-              <Plus size={25} className="text-[#1D2134]" />
+              { isAdding ? <Loader size={25} className="animate-spin" /> :<Plus size={25} className="text-[#1D2134]" />}
             </button>
           </div>
 
-          <button className="flex items-center mt-8 gap-1 bg-white text-[#1D2134] text-[20px] max-md:text-[16px] font-bold px-6 py-4 max-md:px-1 max-md:py-2 max-md:rounded-2xl rounded-full shadow-md hover:opacity-90 transition">
-            <Ticket size={30}  />
+          { user? 
+          <button className="flex items-center mt-8 gap-1 bg-white text-[#1D2134] text-[20px] max-md:text-[16px] font-bold px-6 py-4 max-md:px-1 max-md:py-2 max-md:rounded-2xl rounded-full shadow-md hover:opacity-90 transition" onClick={handleAddToCart} >
+              <Ticket size={30}  />
             Book Now
           </button>
+            :<Link to={'/login'} className="flex items-center mt-8 gap-1 bg-white text-[#1D2134] text-[20px] max-md:text-[16px] font-bold px-6 py-4 max-md:px-1 max-md:py-2 max-md:rounded-2xl rounded-full shadow-md hover:opacity-90 transition" >
+            <Ticket size={30}  />
+            Book Now
+          </Link>}
         </div>
 
         {/* ************************************************************* */}
@@ -65,7 +113,7 @@ export default function EventBookingTicket() {
             />
           </div>
 
-          <h4 className=" font-medium text-white text-2xl max-md:text-xl">Price: 700 EGP</h4>
+          <h4 className=" font-medium text-white text-2xl max-md:text-xl">Price: {event?.price} EGP</h4>
         </div>
 
         {/* these are for the corners */}
