@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from 'react';
-import { Globe, Search, Menu, X, LogOut, ShoppingCart } from 'lucide-react';
+import { Globe, Search, Menu, X, LogOut, Tickets } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../hooks/redux.hooks';
 import { logoutUser } from '../redux/userSlice';
@@ -57,7 +57,7 @@ useEffect(() => {
            Events
           </Link> 
             <Link to="/cart" className="text-[#4B4B4B] hover:text-black text-xl relative">
-              <ShoppingCart size={30} />
+              <Tickets size={30} />
               <span className='absolute bottom-[60%] start-[80%] text-xs text-white bg-red-500 rounded-2xl px-1'>{cartCount}</span>
           </Link> 
           </>
@@ -205,7 +205,7 @@ useEffect(() => {
            Events
           </Link> 
             <Link to="/cart" className="text-[#4B4B4B] hover:text-black text-xl relative">
-              <ShoppingCart size={30} />
+              <Tickets size={30} />
               <span className='absolute bottom-[60%] start-[10%] text-xs text-white bg-red-500 rounded-2xl px-1'>{cartCount}</span>
           </Link> 
           </>
