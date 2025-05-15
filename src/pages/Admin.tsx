@@ -7,6 +7,7 @@ import EditEventForm from '../components/EditEventForm';
 import { useAppDispatch, useAppSelector } from '../hooks/redux.hooks';
 import { logoutUser } from '../redux/userSlice';
 import { LogOut } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Admin() {
   const [showForm, setShowForm] = useState(false);
@@ -15,8 +16,12 @@ export default function Admin() {
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
   const { user } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   
-  console.log(showEditForm);
+  const handleLogout = () => {
+    dispatch(logoutUser());
+    navigate('/');
+  };
   
   const handleToggleForm = () => {
     setShowForm((prev) => !prev);
@@ -35,7 +40,7 @@ export default function Admin() {
       >
         {showForm ? 'Hide Create Event' : `Create Event`}
       </button>
-      { user && <button className='self-start' onClick={() => dispatch(logoutUser())}>
+      { user && <button className='self-start' onClick={ handleLogout}>
             <LogOut size={30} className="text-[#4B4B4B] hover:text-red-500 cursor-pointer" />
           </button>}
       </div>
