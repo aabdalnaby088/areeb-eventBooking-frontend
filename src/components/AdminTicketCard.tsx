@@ -30,7 +30,7 @@ export default function AdminTicketCard({event, setShowEditForm, setSelectedEven
       <div className="flex justify-center items-center mt-4">
         {/* Left Side */}
         <div>
-          <h3 className="text-[20px] font-bold text-[#1D2134]">
+          <h3 className="text-[20px] font-bold text-[#1D2134] line-clamp-1 overflow-hidden">
             {event.name}
           </h3>
           <p className="text-[15px] text-[#1D2134] mt-2"> {formatEgyptTime(event.date)} </p>
