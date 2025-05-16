@@ -6,9 +6,12 @@ import { formatEgyptTime } from "../lib/FormateDate";
 import {  useEffect, useMemo, useState } from "react";
 import Loader from "../components/Loader";
 import { useCart } from "../hooks/useCart";
+import { useTranslation } from "react-i18next";
 
 
 export default function EventDetails() {
+
+  const { t } = useTranslation();
   const { id } = useParams();
   const { data, isLoading } = useEventById(id!) 
   const {data: cartData} = useCart();
@@ -72,7 +75,7 @@ const isInCart = useMemo(() => {
             }}
              className="flex items-center mt-7 gap-2 bg-primary text-bg text-[20px] font-medium px-6 py-4 rounded-full shadow-md hover:opacity-90 transition w-fit">
               <Ticket size={35} />
-             { isInCart ? 'Booked' : 'Book Now'}
+             { isInCart ? t('EventDetails.booked') : t('EventDetails.bookNow')}
             </button>
           </div>
 
@@ -87,7 +90,7 @@ const isInCart = useMemo(() => {
 
         {/* About event section */}
         <div className="mt-12  border-b-2 pb-14 max-md:text-center max-md:mt-8 max-md:pb-10  ">
-            <h2 className=" text-[30px] font-bold">About Event  </h2>
+            <h2 className=" text-[30px] font-bold">{t('EventDetails.aboutEvent')}  </h2>
 
             <p className=" mt-6 max-md:mt-4 text-xl">{data?.description}</p>
         </div>
@@ -96,7 +99,7 @@ const isInCart = useMemo(() => {
         {/* ticket booking section */}
 
          <div id="booking" className="mt-12  border-b-2 pb-14 max-md:text-center max-md:mt-8 max-md:pb-10">
-            <h2 className=" text-[30px] font-bold">Tickets</h2>
+            <h2 className=" text-[30px] font-bold">{t('EventDetails.tickets')}</h2>
 
                 <div className=" mt-9 max-md:mt-5 flex justify-center">
 
@@ -106,15 +109,6 @@ const isInCart = useMemo(() => {
 
 
         </div>
-
-
-
-
-
-
-
-
-
 
       </div>
     </>

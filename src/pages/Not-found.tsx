@@ -2,8 +2,9 @@
 
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
+import { useTranslation } from "react-i18next";
 export default function Notfound() {
+  const { t } = useTranslation();
   return (
     <>
 
@@ -30,10 +31,10 @@ export default function Notfound() {
               <div className="screen_out">
                 <div className="screen_out1">
                   <div className="screen">
-                    <span className="notfound_text"> NOT FOUND</span>
+                    <span className="notfound_text"> {t('Error.notFound')}</span>
                   </div>
                   <div className="screenM">
-                    <span className="notfound_text"> NOT FOUND</span>
+                    <span className="notfound_text"> {t('Error.notFound')}</span>
                   </div>
                 </div>
               </div>
@@ -71,17 +72,17 @@ export default function Notfound() {
       </div>
     </StyledWrapper>
 
-    <h2 className='text-[#1D2134] text-2xl md:text-3xl lg:text-4xl font-bold mt-[-30px] md:mt-[-40px] lg:mt-[-50px]'>
-  Oops! Page Not Found
+    <h2 className='text-primary text-2xl md:text-3xl lg:text-4xl font-bold mt-[-30px] md:mt-[-40px] lg:mt-[-50px]'>
+  {t('Error.oops')}
 </h2>
 
-<h4 className='text-[#1D2134] text-base md:text-lg lg:text-2xl font-normal mt-[10px] md:mt-[12px] lg:mt-[15px]'>
-  We can't seem to find the page you're looking for.
+<h4 className='text-primary text-base md:text-lg lg:text-2xl font-normal mt-[10px] md:mt-[12px] lg:mt-[15px]'>
+  {t('Error.WeCannotSeem')}
 </h4>
 
 <Link to="/">
-<button className='rounded-4xl border-2 py-3 px-6 md:py-4 md:px-9 border-[#1D2134] text-base md:text-lg lg:text-xl font-bold mt-3 hover:bg-[#1D2134] hover:text-white transition-colors duration-200'>
-  Home
+<button className='rounded-4xl border-2 py-3 px-6 md:py-4 md:px-9 border-primary text-base md:text-lg lg:text-xl font-bold mt-3 hover:bg-primary hover:text-white transition-colors duration-200'>
+   {t('Error.home')}
 </button>
 </Link>
 

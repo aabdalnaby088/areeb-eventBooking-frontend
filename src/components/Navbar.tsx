@@ -7,16 +7,27 @@ import { logoutUser } from '../redux/userSlice';
 import { useCart } from '../hooks/useCart';
 import styled from 'styled-components';
 import { toggleTheme } from '../redux/themeSlice';
+import { useTranslation } from 'react-i18next';
+import { setLanguage } from '../redux/languageSlice';
 
 export default function Navbar() {
-const [isOpen, setIsOpen] = useState<boolean>(false);
-const [showLangDropdown, setShowLangDropdown] = useState<boolean>(false);
-const { user } = useAppSelector((state) => state.user);
- const darkMode = useAppSelector((state) => state.theme.darkMode);
-const dispatch = useAppDispatch();
+  
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [showLangDropdown, setShowLangDropdown] = useState<boolean>(false);
+  const { user } = useAppSelector((state) => state.user);
+  const darkMode = useAppSelector((state) => state.theme.darkMode);
+  const dispatch = useAppDispatch();
+  
+  const [cartCount, setCartCount] = useState<number>(0);
+  const cart = useCart();
+  
+  
+const { t } = useTranslation();
+  
+const changeLanguage = (lng: 'en' | 'es') => {
 
-const [cartCount, setCartCount] = useState<number>(0);
-const cart = useCart();
+  dispatch(setLanguage(lng ));
+};
 
 
 
@@ -49,7 +60,7 @@ useEffect(() => {
           <div className="relative w-full max-w-md ">
             <input
               type="text"
-              placeholder="Search Event"
+              placeholder={t('navbar.searchPlaceholder')}
               className="w-full pl-10 pr-4 py-2 rounded-full shadow-lg border-1 text-primary focus:outline-primary "
             />
             <Search className="absolute left-3 top-2.5 text-gray-400" size={20} />
@@ -61,7 +72,7 @@ useEffect(() => {
           { user ? 
           <>
             <Link to="/events" className="text-secondary cursor-pointer text-xl">
-           Events
+           {t('navbar.events')}
           </Link> 
             <Link to="/cart" className="text-secondary text-xl cursor-pointer relative">
               <Tickets size={30} />
@@ -72,16 +83,16 @@ useEffect(() => {
           : 
           <>
            <Link to="/events" className="text-secondary cursor-pointer text-xl">
-           Events
+           {t('navbar.events')}
           </Link>
           <Link to="/login" className="text-secondary text-xl ">
              <span className='px-4 py-2 rounded-xl shadow-lg border-1 text-bg bg-primary focus:outline-primary hover:text-primary hover:bg-bg transition-all duration-300'>
-              Login
+              {t('navbar.login')}
             </span>
           </Link>
           <Link to="/Signup" className="text-secondary  text-xl">
              <span className='px-4 py-2 rounded-xl shadow-lg border-1 text-bg bg-primary  focus:outline-primary hover:text-primary hover:bg-bg transition-all duration-300'>
-              Signup
+              {t('navbar.signup')}
             </span>
           </Link>
           </>
@@ -99,11 +110,15 @@ useEffect(() => {
 
             {showLangDropdown && (
               <div className="absolute right-0 mt-2 bg-white shadow-md rounded-md py-1 w-28 z-50">
-                <button className="block w-full text-left px-4 py-2 text-sm text-black">
-                  English
+                <button className="block w-full text-left px-4 py-2 text-sm text-black"
+                  onClick={() => changeLanguage('en')}
+                >
+                  English 🇬🇧
                 </button>
-                <button className="block w-full text-left px-4 py-2 text-sm text-black">
-                  Arabic
+                <button className="block w-full text-left px-4 py-2 text-sm text-black"
+                  onClick={() => changeLanguage('es')}
+                >
+                  español 🇪🇸
                 </button>
               </div>
             )}
@@ -196,7 +211,7 @@ useEffect(() => {
           <div className="relative px-4">
             <input
               type="text"
-              placeholder="Search Event"
+              placeholder= {t('navbar.searchPlaceholder')}
               className="w-full pl-10 pr-4 py-2 rounded-full shadow-lg border-1 text-secondary focus:outline-primary"
             />
             <Search className="absolute left-7 top-2.5 text-gray-400" size={18} />
@@ -209,7 +224,7 @@ useEffect(() => {
              { user ? 
           <>
             <Link to="/events" className="text-secondary  text-xl">
-           Events
+           {t('navbar.events')}
           </Link> 
             <Link to="/cart" className="text-secondary  text-xl relative">
               <Tickets size={30} />
@@ -217,7 +232,7 @@ useEffect(() => {
           </Link> 
               <button className="flex items-center space-x-2 hover:text-primary"  onClick={() => dispatch(logoutUser())}>
               <LogOut size={30} className="text-secondary hover:text-red-500 cursor-pointer" />
-              <span>Logout</span>
+              <span>{t('navbar.logout')}</span>
             </button>
           </>
           
@@ -228,18 +243,14 @@ useEffect(() => {
           </Link>
           <Link to="/login" className="text-secondary hover:text-primary text-sm">
              <span className='px-2 py-1 rounded-xl shadow-lg border-1 text-bg bg-primary  focus:outline-primary hover:text-primary hover:bg-bg transition-all duration-300'>
-              Login
+              {t('navbar.login')}
             </span>
           </Link>
           <Link to="/Signup" className="text-secondary hover:text-primary text-sm">
              <span className='px-2 py-1 rounded-xl shadow-lg border-1 text-bg bg-primary  focus:outline-primary hover:text-primary hover:bg-bg transition-all duration-300'>
-              Signup
+              {t('navbar.signup')}
             </span>
           </Link>
-
-
-          
-
           </div>
 
           }
@@ -313,13 +324,20 @@ useEffect(() => {
                 className="flex items-center space-x-2 "
               >
                 <Globe size={20} />
-                <span>Language</span>
+                <span>{t('navbar.language')}</span>
               </button>
 
               {showLangDropdown && (
                 <div className="mt-2 bg-white shadow-md rounded-md py-1 w-28 z-50">
-                  <button className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100">
-                    English
+                  <button className="block w-full text-left px-4 py-2 text-sm text-black"
+                  onClick={() => changeLanguage('en')}
+                  >
+                    English 🇬🇧
+                  </button>
+                  <button className="block w-full text-left px-4 py-2 text-sm text-black"
+                  onClick={() => changeLanguage('es')}
+                  >
+                     español 🇪🇸
                   </button>
                 </div>
               )}

@@ -1,0 +1,53 @@
+{
+  "navbar": {
+    "events": "Eventos",
+    "login": "Iniciar sesión",
+    "signup": "Registrarse",
+    "logout": "Cerrar sesión",
+    "language": "Idioma",
+    "searchPlaceholder": "Buscar evento"
+  },
+  "hero": {
+    "heading": "Encuentra eventos increíbles qu",
+    "heading2": "su",
+    "heading3": "Ciudad",
+    "Sponsors": "Patrocinadores"
+  },
+
+  "UpcommingEvent":
+  {
+    "heading": "Próximos eventos",
+    "ShowEvents": "Mostrar todos los eventos"
+  },
+
+  "ExploreCategories":
+  {
+    "heading": "Explorar todas las categorías"
+  },
+
+  "EventDetails": {
+    "bookNow": "Reservar ahora",
+    "aboutEvent": "Acerca del evento",
+    "tickets": "Entradas",
+    "booked": "Reservado",
+    "price": "Precio",
+    "GeneralAdmission": "Admisión general",
+    "ScanTheCode": "Escanear el código"
+  },
+  "Congratulations": {
+    "heading": "Felicidades, has reservado tu entrada con éxito",
+    "heading2": "Mucha diversión te espera",
+    "home": "Inicio"
+  },
+  "Cart": {
+    "TotalPrice": "Precio total",
+    "confirmPurchase": "Confirmar compra"
+  },
+  "Error": {
+    "oops": "¡Ups! Página no encontrada",
+    "notFound": "NO ENCONTRADA",
+    "WeCannotSeem": "No podemos encontrar la página que estás buscando.",
+    "home": "Inicio"
+  }
+
+}
