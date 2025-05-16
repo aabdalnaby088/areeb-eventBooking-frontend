@@ -16,7 +16,6 @@ import { Toaster } from 'react-hot-toast';
 import Admin from "./pages/Admin";
 
 function App() {
-  const user = localStorage.getItem("user")
   return (
     <HashRouter>
     <ReactQueryProvider>
