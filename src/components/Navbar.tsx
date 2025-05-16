@@ -18,6 +18,8 @@ const dispatch = useAppDispatch();
 const [cartCount, setCartCount] = useState<number>(0);
 const cart = useCart();
 
+
+
 useEffect(() => {
   if (cart.data?.data?.items) {
     const totalQuantity = cart.data.data.items.reduce(
@@ -28,15 +30,8 @@ useEffect(() => {
   }else{
     setCartCount(0);
   }
-   const root = document.documentElement;
-    if (darkMode) {
-      root.classList.add('dark');
-    } else {
-      root.classList.remove('dark');
-    }
-    console.log(darkMode, root.classList);
-    
-}, [cart.data, darkMode]);
+}, [cart.data]);
+
 
 
   return (
@@ -220,6 +215,10 @@ useEffect(() => {
               <Tickets size={30} />
               <span className='absolute bottom-[60%] start-[10%] text-xs text-white bg-red-500 rounded-2xl px-1'>{cartCount}</span>
           </Link> 
+              <button className="flex items-center space-x-2 hover:text-black"  onClick={() => dispatch(logoutUser())}>
+              <LogOut size={30} className="text-secondary hover:text-red-500 cursor-pointer" />
+              <span>Logout</span>
+            </button>
           </>
           
           : 
@@ -228,12 +227,12 @@ useEffect(() => {
            Events
           </Link>
           <Link to="/login" className="text-secondary hover:text-black text-sm">
-             <span className='px-2 py-1 rounded-xl shadow-lg border-1 text-[#FFF] bg-primary focus:outline-primary hover:bg-[#fff] hover:text-primary transition-all duration-300'>
+             <span className='px-2 py-1 rounded-xl shadow-lg border-1 text-bg bg-primary  focus:outline-primary hover:text-primary hover:bg-bg transition-all duration-300'>
               Login
             </span>
           </Link>
           <Link to="/Signup" className="text-secondary hover:text-black text-sm">
-             <span className='px-2 py-1 rounded-xl shadow-lg border-1 text-[#FFF] bg-primary focus:outline-primary hover:bg-[#fff] hover:text-primary transition-all duration-300'>
+             <span className='px-2 py-1 rounded-xl shadow-lg border-1 text-bg bg-primary  focus:outline-primary hover:text-primary hover:bg-bg transition-all duration-300'>
               Signup
             </span>
           </Link>
@@ -249,7 +248,7 @@ useEffect(() => {
 
       <StyledWrapper>
       <label className="switch">
-        <input id="input" type="checkbox" onClick={() => dispatch(toggleTheme())} />
+        <input id="input" type="checkbox" checked={darkMode} onClick={() => dispatch(toggleTheme())} />
         <div className="slider round">
           <div className="sun-moon">
             <svg id="moon-dot-1" className="moon-dot" viewBox="0 0 100 100">
@@ -326,10 +325,7 @@ useEffect(() => {
               )}
             </div>
 
-            <button className="flex items-center space-x-2 hover:text-black"  onClick={() => dispatch(logoutUser())}>
-              <LogOut size={30} className="text-secondary hover:text-red-500 cursor-pointer" />
-              <span>Logout</span>
-            </button>
+
           </div>
         </div>
       )}
