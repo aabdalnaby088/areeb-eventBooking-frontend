@@ -4,12 +4,13 @@ import { formatEgyptTime } from "../lib/FormateDate";
 import { Link } from "react-router-dom";
 import { useCart } from "../hooks/useCart";
 import { useMemo } from "react";
-
+import { useTranslation } from "react-i18next";
 type EventTicketCardProps = {
   event:Event 
 };
 
 export default function EventTicketCard(event : EventTicketCardProps) {
+  const { t } = useTranslation();
   const date = formatEgyptTime(event.event.date);
   const {data: cartData} = useCart();
 
@@ -44,16 +45,16 @@ const isInCart = useMemo(() => {
             </div>
             <div className="flex items-center text-[15px]  max-md:text-[13px]  font-medium text-bg">
               <Tag className=" max-md:w-5 max-md:h-5  w-4 h-4 mr-2" />
-              Price: {event.event.price} EGP
+              {t("EventDetails.price")}: {event.event.price} EGP
             </div>
           </div>
 
           <div className=" max-md:mt-4 mt-6  flex justify-center">
             { isInCart ? <button className="bg-bg text-red-500 max-md:text-[15px] text-[18px] font-bold max-md:py-2 max-md:px-5  py-4 px-10 rounded-full shadow-md">
-              Booked
+              {t("EventDetails.booked")}
             </button>:
             <Link to={`event/${event.event._id}`} className=" text-primary bg-bg max-md:text-[15px] text-[18px] font-bold max-md:py-2 max-md:px-5  py-4 px-10 rounded-full shadow-md hover:opacity-90 transition cursor-pointer">
-              Book Now
+              {t("EventDetails.bookNow")}
             </Link>
             }
           </div>
