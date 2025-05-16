@@ -60,10 +60,10 @@ useEffect(() => {
         <div className="hidden md:flex items-center space-x-4">
           { user ? 
           <>
-            <Link to="/events" className="text-secondary hover:text-black text-xl">
+            <Link to="/events" className="text-secondary cursor-pointer text-xl">
            Events
           </Link> 
-            <Link to="/cart" className="text-secondary hover:text-black text-xl relative">
+            <Link to="/cart" className="text-secondary text-xl cursor-pointer relative">
               <Tickets size={30} />
               <span className='absolute bottom-[60%] start-[80%] text-xs text-white bg-red-500 rounded-2xl px-1'>{cartCount}</span>
           </Link> 
@@ -71,7 +71,7 @@ useEffect(() => {
           
           : 
           <>
-           <Link to="/events" className="text-secondary hover:text-black text-xl">
+           <Link to="/events" className="text-secondary cursor-pointer text-xl">
            Events
           </Link>
           <Link to="/login" className="text-secondary text-xl ">
@@ -92,17 +92,17 @@ useEffect(() => {
           <div className="relative">
             <button
               onClick={() => setShowLangDropdown(prev => !prev)}
-              className="text-secondary hover:text-black"
+              className="text-secondary cursor-pointer"
             >
               <Globe size={30} />
             </button>
 
             {showLangDropdown && (
               <div className="absolute right-0 mt-2 bg-white shadow-md rounded-md py-1 w-28 z-50">
-                <button className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100">
+                <button className="block w-full text-left px-4 py-2 text-sm text-black">
                   English
                 </button>
-                <button className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100">
+                <button className="block w-full text-left px-4 py-2 text-sm text-black">
                   Arabic
                 </button>
               </div>
@@ -208,14 +208,14 @@ useEffect(() => {
           <div className="px-4 flex flex-col space-y-2 text-secondary">
              { user ? 
           <>
-            <Link to="/events" className="text-secondary hover:text-black text-xl">
+            <Link to="/events" className="text-secondary  text-xl">
            Events
           </Link> 
-            <Link to="/cart" className="text-secondary hover:text-black text-xl relative">
+            <Link to="/cart" className="text-secondary  text-xl relative">
               <Tickets size={30} />
               <span className='absolute bottom-[60%] start-[10%] text-xs text-white bg-red-500 rounded-2xl px-1'>{cartCount}</span>
           </Link> 
-              <button className="flex items-center space-x-2 hover:text-black"  onClick={() => dispatch(logoutUser())}>
+              <button className="flex items-center space-x-2 hover:text-primary"  onClick={() => dispatch(logoutUser())}>
               <LogOut size={30} className="text-secondary hover:text-red-500 cursor-pointer" />
               <span>Logout</span>
             </button>
@@ -223,15 +223,15 @@ useEffect(() => {
           
           : 
           <div className='flex flex-col gap-3'>
-           <Link to="/events" className="text-secondary hover:text-black text-xl">
+           <Link to="/events" className="text-secondary hover:text-primary text-xl">
            Events
           </Link>
-          <Link to="/login" className="text-secondary hover:text-black text-sm">
+          <Link to="/login" className="text-secondary hover:text-primary text-sm">
              <span className='px-2 py-1 rounded-xl shadow-lg border-1 text-bg bg-primary  focus:outline-primary hover:text-primary hover:bg-bg transition-all duration-300'>
               Login
             </span>
           </Link>
-          <Link to="/Signup" className="text-secondary hover:text-black text-sm">
+          <Link to="/Signup" className="text-secondary hover:text-primary text-sm">
              <span className='px-2 py-1 rounded-xl shadow-lg border-1 text-bg bg-primary  focus:outline-primary hover:text-primary hover:bg-bg transition-all duration-300'>
               Signup
             </span>
@@ -310,7 +310,7 @@ useEffect(() => {
             <div className="relative">
               <button
                 onClick={() => setShowLangDropdown(prev => !prev)}
-                className="flex items-center space-x-2 hover:text-black"
+                className="flex items-center space-x-2 "
               >
                 <Globe size={20} />
                 <span>Language</span>
