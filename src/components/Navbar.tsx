@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from 'react';
-import { Globe, Search, Menu, X, LogOut, Tickets } from 'lucide-react';
+import { Globe, Menu, X, LogOut, Tickets } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../hooks/redux.hooks';
 import { logoutUser } from '../redux/userSlice';
