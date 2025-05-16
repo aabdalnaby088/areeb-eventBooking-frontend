@@ -1,0 +1,60 @@
+{
+  "navbar": {
+    "events": "Events",
+    "login": "Login",
+    "signup": "Signup",
+    "logout": "Logout",
+    "language": "Language",
+    "searchPlaceholder": "Search Event"
+  },
+  "hero": {
+    "heading": "Find Amazing Events Happening in",
+    "heading2": "Your",
+    "heading3": "City",
+    "Sponsors": "Sponsors"
+  },
+
+  "UpcommingEvent":
+  {
+    "heading": "Upcomming Events",
+    "ShowEvents": "Show All Events"
+  },
+
+  "ExploreCategories":
+  {
+    "heading": "Explore All Categories"
+  },
+
+  "EventDetails":
+  {
+    "bookNow": "Book Now",
+    "aboutEvent": "About Event",
+    "tickets": "Tickets",
+    "booked": "Booked",
+    "price": "Price",
+    "GeneralAdmission": "General Admission",
+    "ScanTheCode": "Scan the code"
+    
+  },
+
+  "Congratulations":
+  {
+    "heading": "Congratulations You Booked Your Ticket Successfully",
+    "heading2": "A lot of Fun Waiting For You",
+    "home": "Home"
+
+  },
+
+  "Cart":
+  {
+    "TotalPrice": "Total Price",
+    "confirmPurchase": "Confirm Purchase"
+
+  },
+  "Error": {
+    "oops": "Oops! Page Not Found",
+    "notFound": "NOT FOUND",
+    "WeCannotSeem": "We can't seem to find the page you're looking for.",
+    "home": "Home"
+  }
+}

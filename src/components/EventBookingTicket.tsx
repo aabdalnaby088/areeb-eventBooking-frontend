@@ -8,12 +8,14 @@ import { useAddToCart } from "../hooks/useAddToCart";
 import type { Event } from "../Types/event";
 import { useCart } from "../hooks/useCart";
 import { useHandleCartQuantity } from "../hooks/useHandleCartQuantity";
+import { useTranslation } from "react-i18next";
 
 type EventBookingTicketProps = {
   event: Event;
 };
 
 export default function EventBookingTicket({event} : EventBookingTicketProps) {
+  const { t } = useTranslation();
 const [cartCount, setCartCount] = useState<number>(0);
 const cart = useCart();
 
@@ -88,11 +90,11 @@ const { mutate: removeFromcart, isPending: isRemoving } = useHandleCartQuantity(
           { user? 
           <Link to={'/cart'} className="flex items-center mt-8 gap-1 bg-white text-[#1D2134] text-[20px] max-md:text-[12px] font-bold px-6 py-4 max-md:px-1 max-md:py-2 max-md:rounded-2xl rounded-full shadow-md hover:opacity-90 transition" >
               <Ticket size={25}  />
-            Book Now
+            {t('EventDetails.bookNow')}
           </Link>
             :<Link to={'/login'} className="flex items-center mt-8 gap-1 bg-white text-[#1D2134] text-[20px] max-md:text-[16px] font-bold px-6 py-4 max-md:px-1 max-md:py-2 max-md:rounded-2xl rounded-full shadow-md hover:opacity-90 transition" >
             <Ticket size={30}  />
-            Book Now
+            {t('EventDetails.bookNow')}
           </Link>}
         </div>
 
@@ -102,9 +104,9 @@ const { mutate: removeFromcart, isPending: isRemoving } = useHandleCartQuantity(
 
         <div className=" w-[60%] flex flex-col justify-center items-center ">
           <h4 className=" font-medium text-white text-3xl max-md:text-sm">
-            General Admission
+            {t('EventDetails.GeneralAdmission')}
           </h4>
-          <h5 className=" font-normal text-white text-xl max-md:text-[12px]">Scan The Code</h5>
+          <h5 className=" font-normal text-white text-xl max-md:text-[12px]">{t('EventDetails.ScanTheCode')}</h5>
           <div className="relative max-md:w-[70px] max-md:h-[70px]  w-[97px] h-[97px] overflow-hidden max-md:mt-2 max-md:mb-2 mt-3.5 mb-3.5">
             <img
               src="/InstructionsQRCode.png"
@@ -113,7 +115,7 @@ const { mutate: removeFromcart, isPending: isRemoving } = useHandleCartQuantity(
             />
           </div>
 
-          <h4 className=" font-medium text-white text-2xl max-md:text-sm">Price: {event?.price} EGP</h4>
+          <h4 className=" font-medium text-white text-2xl max-md:text-sm">{t('EventDetails.price')}: {event?.price} EGP</h4>
         </div>
 
         {/* these are for the corners */}

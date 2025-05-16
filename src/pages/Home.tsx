@@ -1,4 +1,5 @@
 
+import { useTranslation } from "react-i18next";
 import CategorySection from "../sections/CategorySection";
 import EventsSection from "../sections/EventsSection";
 
@@ -6,7 +7,8 @@ import EventsSection from "../sections/EventsSection";
 
 export default function Home() {
 
-  
+  const { t } = useTranslation();
+
   
   return (
     <div className="">
@@ -16,7 +18,7 @@ export default function Home() {
           {/* ******************************************************* */}
           {/* Text Section */}
           <h1 className=" max-md:text-[30px] max-md:leading-[35px] max-md:text-center text-[90px] font-extrabold text-primary leading-[115px] flex-1">
-            Find Amazing Events Happening in
+            {t('hero.heading')}
           </h1>
           {/* ******************************************************* */}
 
@@ -33,7 +35,7 @@ export default function Home() {
 
         {/* second section with another video */}
         <div className="flex justify-evenly max-md:justify-center max-md:mx-auto items-center w-[60%] mt-[-30px] ms-[-40px]   ">
-          <h1 className="max-md:text-[30px]  text-[90px] font-extrabold text-primary">Your</h1>
+          <h1 className="max-md:text-[30px]  text-[90px] font-extrabold text-primary">{t('hero.heading2')}</h1>
 
           <div className=" max-md:hidden w-[250px] h-[110px] rounded-full overflow-hidden ml-5  ">
             <video autoPlay muted loop className="w-full h-full object-cover">
@@ -42,7 +44,7 @@ export default function Home() {
             </video>
           </div>
 
-          <h1 className=" max-md:text-[30px] text-[90px] font-extrabold text-primary">City</h1>
+          <h1 className=" max-md:text-[30px] text-[90px] font-extrabold text-primary">{t('hero.heading3')}</h1>
         </div>
 
            <div className=" md:hidden mt-5 w-[300px] h-[110px] rounded-full overflow-hidden mx-auto ">
@@ -84,7 +86,7 @@ export default function Home() {
 
         <div className="  w-[55%] max-md:w-full mt-5 flex max-md:flex-col items-center max-md:text-center ">
 
-          <h3 className=" text-4xl max-md:text-3xl text-primary font-extrabold ">Sponsors</h3>
+          <h3 className=" text-4xl max-md:text-3xl text-primary font-extrabold ">{t('hero.Sponsors')}</h3>
 
           {/* sponsors logos */}
 

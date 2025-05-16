@@ -6,12 +6,14 @@ import { Link } from "react-router-dom";
 import { formatEgyptTime } from "../lib/FormateDate";
 import { calcPrice } from "../lib/calcPrice";
 import { useRemoveFromCart } from "../hooks/useRemoveFromCart";
+import { useTranslation } from "react-i18next";
 type cartCardProps = {
   event:Event,
   deleteOption?:true
   quantity?:number
 };
 export default function CartCard( {event, deleteOption, quantity}:cartCardProps) {
+  const { t } = useTranslation();
   const date = formatEgyptTime(event.date);
   const {mutate: removeFromcart, isPending: isRemoving} = useRemoveFromCart();
   const handleRemoveFromCart = () => {
@@ -44,8 +46,8 @@ export default function CartCard( {event, deleteOption, quantity}:cartCardProps)
 
         {/* Right Side */}
         { deleteOption && <div className="text-right">
-          <p className="text-[15px] text-primary font-bold">Tickets: {quantity}</p>
-          <p className="text-[15px] text-primary font-bold">Total Price:</p>
+          <p className="text-[15px] text-primary font-bold">{t('EventDetails.tickets')}: {quantity}</p>
+          <p className="text-[15px] text-primary font-bold">{t('EventDetails.price')}:</p>
           <p className="text-[15px] font-bold text-red-500">{calcPrice(quantity!, event.price)} EGP</p>
         </div>
       }
