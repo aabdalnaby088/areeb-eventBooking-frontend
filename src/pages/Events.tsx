@@ -5,8 +5,9 @@ import { useEvents } from '../hooks/useEvents';
 import { useParams } from 'react-router-dom';
 import { useEventsByCategory } from '../hooks/useGetEventsByCategory';
 import type { Event } from '../Types/event';
-
+import { useTranslation } from 'react-i18next';
 export default function Events() {
+  const { t } = useTranslation();
   const { category } = useParams();
   const { data, isLoading } = category ? useEventsByCategory(category) : useEvents();
   
@@ -30,6 +31,13 @@ export default function Events() {
   };
   
   if (isLoading) return <Loader />;
+
+  
+
+  else if (!data?.length) return <div className='flex flex-col items-center justify-center w-full'>
+    <img src="/noResults.png" className="my-5 w-[20%]" alt=" empty cart" />
+    <p className='p-5'>{t('Error.noResults')}</p>
+  </div>;
   
   // Check if there are more events to load
   const hasMore = data && visibleEvents.length < data.length;

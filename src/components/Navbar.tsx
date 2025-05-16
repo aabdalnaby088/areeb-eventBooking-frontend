@@ -1,14 +1,14 @@
 
-import { Globe, LogOut, Menu, Search, Tickets, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { Globe, Menu, X, LogOut, Tickets } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../hooks/redux.hooks';
-import { useCart } from '../hooks/useCart';
-import { setLanguage } from '../redux/languageSlice';
-import { toggleTheme } from '../redux/themeSlice';
 import { logoutUser } from '../redux/userSlice';
+import { useCart } from '../hooks/useCart';
+import styled from 'styled-components';
+import { toggleTheme } from '../redux/themeSlice';
+import { useTranslation } from 'react-i18next';
+import { setLanguage } from '../redux/languageSlice';
 
 export default function Navbar() {
   
@@ -46,34 +46,28 @@ useEffect(() => {
 
 
   return (
-    <nav className="w-[95%] py-4 px-6 border-b-2 bg-bg">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-      
+
+    <nav className="w-[95%] py-4 px-6 border-b-2 ">
+      <div className="max-w-7xl mx-auto flex items-center justify-between ">
+
+
+       <div className='md:hidden' >
         <Link
         style={{ fontFamily: "'Bagel Fat One', sans-serif" }}
          to="/" className="text-2xl font-black text-primary tracking-widest">
           BOOK EVENTS
         </Link>
-
-        {/* Large screen Search Bar */}
-
-
-        <div className="flex-1 mx-6 hidden md:flex justify-center text-primary">
-          <div className="relative w-full max-w-md ">
-            <input
-            
-              type="text"
-              placeholder={t('navbar.searchPlaceholder')}
-              className="w-full pl-10 pr-4 py-2 rounded-full shadow-lg border-1 text-primary focus:outline-primary "
-            />
-            <Search className="absolute left-3 top-2.5 text-gray-400" size={20} />
-          </div>
         </div>
 
-        
 
         {/* Desktop Icons */}
-        <div className="hidden md:flex items-center space-x-4">
+        <div className="hidden md:flex items-center space-x-4  w-full justify-between">
+         
+{/* ************************************************* */}
+
+
+{/* left side icons */}
+    <div className=' flex justify-evenly w-[25%]'>
           { user ? 
           <>
             <Link to="/events" className="text-secondary cursor-pointer text-xl">
@@ -90,12 +84,12 @@ useEffect(() => {
            <Link to="/events" className="text-secondary cursor-pointer text-xl">
            {t('navbar.events')}
           </Link>
-          <Link to="/login" className="text-secondary text-xl ">
+          <Link to="/login" className="text-secondary text-md ">
              <span className='px-4 py-2 rounded-xl shadow-lg border-1 text-bg bg-primary focus:outline-primary hover:text-primary hover:bg-bg transition-all duration-300'>
               {t('navbar.login')}
             </span>
           </Link>
-          <Link to="/Signup" className="text-secondary  text-xl">
+          <Link to="/Signup" className="text-secondary  text-md">
              <span className='px-4 py-2 rounded-xl shadow-lg border-1 text-bg bg-primary  focus:outline-primary hover:text-primary hover:bg-bg transition-all duration-300'>
               {t('navbar.signup')}
             </span>
@@ -104,6 +98,27 @@ useEffect(() => {
 
           }
 
+      </div>
+
+{/* ************************************************* */}
+
+
+      <div >
+        <Link
+        style={{ fontFamily: "'Bagel Fat One', sans-serif" }}
+         to="/" className="text-2xl font-black text-primary tracking-widest">
+          BOOK EVENTS
+        </Link>
+        </div>
+
+
+
+
+{/* ***************************************************** */}
+
+
+{/* right side icons */}
+<div className=' w-[25%] flex justify-evenly'>
           {/* Language Dropdown */}
           <div className="relative">
             <button
@@ -195,6 +210,9 @@ useEffect(() => {
           { user && <button onClick={() => dispatch(logoutUser())}>
             <LogOut size={30} className="text-secondary hover:text-red-500 cursor-pointer" />
           </button>}
+</div>
+
+          
         </div>
 
 
@@ -212,17 +230,6 @@ useEffect(() => {
       {/* Mobile Dropdown */}
       {isOpen && (
         <div className="md:hidden mt-4 space-y-4">
-          {/* Search */}
-          <div className="relative px-4">
-            <input
-              type="text"
-              placeholder= {t('navbar.searchPlaceholder')}
-              className="w-full pl-10 pr-4 py-2 rounded-full shadow-lg border-1 text-secondary focus:outline-primary"
-            />
-            <Search className="absolute left-7 top-2.5 text-gray-400" size={18} />
-          </div>
-
-
 
           {/* Links */}
           <div className="px-4 flex flex-col space-y-2 text-secondary">

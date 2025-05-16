@@ -24,7 +24,7 @@ export default function Home() {
 
           {/* ******************************************************* */}
           {/* Video Section */}
-          <div className=" max-md:hidden w-[500px] h-[110px] rounded-full overflow-hidden ml-5 absolute top-40 left-[47%] ">
+          <div className=" max-md:hidden w-[500px] h-[110px] rounded-full overflow-hidden ml-5 absolute top-37 left-[47%] ">
             <video autoPlay muted loop className="w-full h-full object-cover">
               <source src="/pabloHeroSection.mp4" type="video/mp4" />
               Your browser does not support the video tag.

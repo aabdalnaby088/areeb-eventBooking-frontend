@@ -1,9 +1,9 @@
 {
   "navbar": {
     "events": "Eventos",
-    "login": "Iniciar sesión",
+    "login": "Iniciarsesión",
     "signup": "Registrarse",
-    "logout": "Cerrar sesión",
+    "logout": "Cerrarsesión",
     "language": "Idioma",
     "searchPlaceholder": "Buscar evento"
   },
@@ -47,7 +47,8 @@
     "oops": "¡Ups! Página no encontrada",
     "notFound": "NO ENCONTRADA",
     "WeCannotSeem": "No podemos encontrar la página que estás buscando.",
-    "home": "Inicio"
+    "home": "Inicio",
+    "noResults": "No se encontraron resultados"
   }
 
 }

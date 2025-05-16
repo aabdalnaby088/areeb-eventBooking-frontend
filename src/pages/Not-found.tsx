@@ -81,7 +81,7 @@ export default function Notfound() {
 </h4>
 
 <Link to="/">
-<button className='rounded-4xl border-2 py-3 px-6 md:py-4 md:px-9 border-primary text-base md:text-lg lg:text-xl font-bold mt-3 hover:bg-primary hover:text-white transition-colors duration-200'>
+<button className='rounded-4xl border-2 py-3 px-6 md:py-4 md:px-9 border-primary text-base md:text-lg lg:text-xl font-bold mt-3 hover:bg-primary hover:text-bg transition-colors duration-200'>
    {t('Error.home')}
 </button>
 </Link>
