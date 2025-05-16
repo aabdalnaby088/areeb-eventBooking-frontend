@@ -30,3 +30,7 @@
    background-color: var(--color-bg);
    color: var(--color-primary);
  }
+
+ iframe#webpack-dev-server-client-overlay {
+   display: none !important
+ }
