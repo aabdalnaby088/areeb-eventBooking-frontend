@@ -4,6 +4,7 @@ import axios from "./axiosInstance";
 export const getCart = async () => {
     try {
         const token = localStorage.getItem('token');
+        if (!token) return null;
         
         const res = await axios.get('/cart', {
             headers: {
@@ -15,6 +16,7 @@ export const getCart = async () => {
         console.log(error);
     }
 };
+
 
 
 export const addToCart = async (itemId: string) => {
