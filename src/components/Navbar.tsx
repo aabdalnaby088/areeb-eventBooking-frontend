@@ -79,13 +79,13 @@ useEffect(() => {
            <Link to="/events" className="text-secondary hover:text-black text-xl">
            Events
           </Link>
-          <Link to="/login" className="text-secondary hover:text-black text-xl">
-             <span className='px-4 py-2 rounded-xl shadow-lg border-1 text-[#FFF] bg-primary focus:outline-primary hover:bg-[#fff] hover:text-primary transition-all duration-300'>
+          <Link to="/login" className="text-secondary text-xl ">
+             <span className='px-4 py-2 rounded-xl shadow-lg border-1 text-bg bg-primary focus:outline-primary hover:text-primary hover:bg-bg transition-all duration-300'>
               Login
             </span>
           </Link>
-          <Link to="/Signup" className="text-secondary hover:text-black text-xl">
-             <span className='px-4 py-2 rounded-xl shadow-lg border-1 text-[#FFF] bg-primary focus:outline-primary hover:bg-[#fff] hover:text-primary transition-all duration-300'>
+          <Link to="/Signup" className="text-secondary  text-xl">
+             <span className='px-4 py-2 rounded-xl shadow-lg border-1 text-bg bg-primary  focus:outline-primary hover:text-primary hover:bg-bg transition-all duration-300'>
               Signup
             </span>
           </Link>
