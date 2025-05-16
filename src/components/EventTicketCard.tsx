@@ -49,10 +49,10 @@ const isInCart = useMemo(() => {
           </div>
 
           <div className=" max-md:mt-4 mt-6  flex justify-center">
-            { isInCart ? <button className="bg-primary text-red-500 max-md:text-[15px] text-[18px] font-bold max-md:py-2 max-md:px-5  py-4 px-10 rounded-full shadow-md">
+            { isInCart ? <button className="bg-bg text-red-500 max-md:text-[15px] text-[18px] font-bold max-md:py-2 max-md:px-5  py-4 px-10 rounded-full shadow-md">
               Booked
             </button>:
-            <Link to={`event/${event.event._id}`} className=" text-[#1D2134] bg-primary max-md:text-[15px] text-[18px] font-bold max-md:py-2 max-md:px-5  py-4 px-10 rounded-full shadow-md hover:opacity-90 transition cursor-pointer">
+            <Link to={`event/${event.event._id}`} className=" text-primary bg-bg max-md:text-[15px] text-[18px] font-bold max-md:py-2 max-md:px-5  py-4 px-10 rounded-full shadow-md hover:opacity-90 transition cursor-pointer">
               Book Now
             </Link>
             }

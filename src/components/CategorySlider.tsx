@@ -33,7 +33,7 @@ export default function CategorySlider() {
           className='w-full'
           >
         <SwiperSlide>
-            <CategoryCard image= {musicCategory} category={t('ExploreCategories.Music')}/>
+            <CategoryCard image= {musicCategory} category='Music'/>
         </SwiperSlide>
         <SwiperSlide>
             <CategoryCard image={sportsCategory} category='Sports'/>
