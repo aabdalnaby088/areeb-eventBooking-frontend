@@ -19,7 +19,7 @@ export default function CategoryCard({category, image}:CategoryCardProps) {
           />
         </div>
 
-        <Link to={`/events/${category}`} className=" w-[341px] h-[93px] bg-[#1D2134] text-white rounded-[20px] mt-[-10px] relative flex justify-between items-center">
+        <Link to={`/events/${category}`} className=" w-[341px] h-[93px] bg-primary text-bg rounded-[20px] mt-[-10px] relative flex justify-between items-center">
           {/* data of the category */}
           <div className="  ms-8">
             <h3 className=" text-[20px] font-medium ">{category}</h3>

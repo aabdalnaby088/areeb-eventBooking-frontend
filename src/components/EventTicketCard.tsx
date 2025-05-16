@@ -25,34 +25,34 @@ const isInCart = useMemo(() => {
 
   return (
     <>
-      <div className="main bg-[#1D2134] max-md:w-[370px] max-md:h-[230px]  w-[696px] h-[324px] rounded-2xl shadow-sm flex relative transition-transform duration-300 ease-in-out hover:rotate-[-2deg] origin-left cursor-pointer">
+      <div className="main bg-primary max-md:w-[370px] max-md:h-[230px]  w-[696px] h-[324px] rounded-2xl shadow-sm flex relative transition-transform duration-300 ease-in-out hover:rotate-[-2deg] origin-left cursor-pointer">
         {/* ticket content */}
-        <div className=" max-md:w-[50%]  w-[40%] max-md:border-e-4  border-e-8 border-[#FAF9F6] border-dashed ">
+        <div className=" max-md:w-[50%]  w-[40%] max-md:border-e-4  border-e-8 border-bg border-dashed ">
           {/* name of the event */}
-          <h2 className=" max-md:text-lg  text-2xl font-bold max-md:mb-0 mb-2 text-white text-start max-md:ps-2 ps-5 pt-6 line-clamp-1">
+          <h2 className=" max-md:text-lg  text-2xl font-bold max-md:mb-0 mb-2 text-bg text-start max-md:ps-2 ps-5 pt-6 line-clamp-1">
             {event.event.name}
           </h2>
 
           {/* event details */}
           <div className=" max-md:ps-2 ps-5 max-md:pt-1 pt-9">
-            <p className=" max-md:text-[15px] text-xl font-medium text-white mb-4 ">
+            <p className=" max-md:text-[15px] text-xl font-medium text-bg mb-4 ">
               {date}
             </p>
-            <div className="flex items-center text-[15px] max-md:text-[13px]  font-medium text-white mb-2">
+            <div className="flex items-center text-[15px] max-md:text-[13px]  font-medium text-bg mb-2">
               <MapPin className=" max-md:w-7 max-md:h-7  w-4 h-4 mr-2" />
               {event.event.venue}
             </div>
-            <div className="flex items-center text-[15px]  max-md:text-[13px]  font-medium text-white">
+            <div className="flex items-center text-[15px]  max-md:text-[13px]  font-medium text-bg">
               <Tag className=" max-md:w-5 max-md:h-5  w-4 h-4 mr-2" />
               Price: {event.event.price} EGP
             </div>
           </div>
 
           <div className=" max-md:mt-4 mt-6  flex justify-center">
-            { isInCart ? <button className="bg-white text-red-500 max-md:text-[15px] text-[18px] font-bold max-md:py-2 max-md:px-5  py-4 px-10 rounded-full shadow-md">
+            { isInCart ? <button className="bg-primary text-red-500 max-md:text-[15px] text-[18px] font-bold max-md:py-2 max-md:px-5  py-4 px-10 rounded-full shadow-md">
               Booked
             </button>:
-            <Link to={`event/${event.event._id}`} className=" text-[#1D2134] bg-white max-md:text-[15px] text-[18px] font-bold max-md:py-2 max-md:px-5  py-4 px-10 rounded-full shadow-md hover:opacity-90 transition cursor-pointer">
+            <Link to={`event/${event.event._id}`} className=" text-[#1D2134] bg-primary max-md:text-[15px] text-[18px] font-bold max-md:py-2 max-md:px-5  py-4 px-10 rounded-full shadow-md hover:opacity-90 transition cursor-pointer">
               Book Now
             </Link>
             }
@@ -70,8 +70,8 @@ const isInCart = useMemo(() => {
           />
         </Link>
 
-        <div className=" bg-[#FAF9F6] max-md:h-10 max-md:w-10 max-md:top-[-28px] max-md:left-[43%]   h-14 w-14 rounded-full absolute top-[-39px] left-[34.2%]"></div>
-        <div className=" bg-[#FAF9F6] max-md:h-10 max-md:w-10   h-14 w-14 rounded-full absolute  max-md:top-[215px]  top-[308px] max-md:left-[43%]  left-[34.2%]"></div>
+        <div className=" bg-bg max-md:h-10 max-md:w-10 max-md:top-[-28px] max-md:left-[43%]   h-14 w-14 rounded-full absolute top-[-39px] left-[34.2%]"></div>
+        <div className=" bg-bg max-md:h-10 max-md:w-10   h-14 w-14 rounded-full absolute  max-md:top-[215px]  top-[308px] max-md:left-[43%]  left-[34.2%]"></div>
       </div>
     </>
   );

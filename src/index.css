@@ -1,7 +1,7 @@
+
 @import "tailwindcss";
  :root {
    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-   background: #FAF9F6;
    font-synthesis: none;
    text-rendering: optimizeLegibility;
    -webkit-font-smoothing: antialiased;
@@ -12,4 +12,21 @@
   max-width: 1300px;
  }
 
- 
+@custom-variant dark (&:where(.dark, .dark *));
+
+ @theme {
+    --color-bg: #FAF9F6;
+    --color-primary: #1D2134;
+    --color-secondary: #4B4B4B;
+ }
+
+ .dark {
+   --color-bg: #2b3254;
+   --color-primary: #FAF9F6;
+   --color-secondary: #FAF9F6;
+ }
+
+ body {
+   background-color: var(--color-bg);
+   color: var(--color-primary);
+ }
