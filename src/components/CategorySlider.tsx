@@ -9,9 +9,7 @@ import sportsCategory from '/sportCategory.jpg';
 import techCategory from '/techCategory.jpg';
 import artCategory from '/artCategory.jpg';
 import businessCategory from '/businessCategory.jpg';
-import { useTranslation } from 'react-i18next';
 export default function CategorySlider() {
-    const { t } = useTranslation();
   return (
     <div className="flex flex-col justify-center md:items-start items-center relative" >
     <SlidingBtns nav='2' />
@@ -33,7 +31,7 @@ export default function CategorySlider() {
           className='w-full'
           >
         <SwiperSlide>
-            <CategoryCard image= {musicCategory} category={t('ExploreCategories.Music')}/>
+            <CategoryCard image= {musicCategory} category='Music'/>
         </SwiperSlide>
         <SwiperSlide>
             <CategoryCard image={sportsCategory} category='Sports'/>
