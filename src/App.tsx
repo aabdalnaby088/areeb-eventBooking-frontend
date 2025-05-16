@@ -16,6 +16,7 @@ import { Toaster } from 'react-hot-toast';
 import Admin from "./pages/Admin";
 
 function App() {
+  const user = localStorage.getItem("user")
   return (
     <HashRouter>
     <ReactQueryProvider>
@@ -25,6 +26,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home/>} />
+
         <Route path="cart" element={<Cart/>} />
         <Route path="event/:id" element={<EventDetails/>} />
         <Route path="events" element={<Events/>} />

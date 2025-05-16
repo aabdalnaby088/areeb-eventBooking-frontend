@@ -5,8 +5,20 @@ type ThemeState = {
   darkMode: boolean;
 };
 
+const darkMode = localStorage.getItem('darkMode');
+
+if(darkMode){
+  const json = JSON.parse(darkMode);
+  if(json){
+    document.documentElement.classList.add('dark');
+  }
+  else{
+    document.documentElement.classList.remove('dark');
+  }
+}
+
 const initialState: ThemeState = {
-  darkMode: false,
+  darkMode: darkMode ? JSON.parse(darkMode) : false,
 };
 
 const themeSlice = createSlice({
@@ -15,10 +27,16 @@ const themeSlice = createSlice({
   reducers: {
     toggleTheme: (state) => {
       state.darkMode = !state.darkMode;
+      console.log(state.darkMode);
+      
       if (state.darkMode) {
+        console.log(state.darkMode);
+        
+        localStorage.setItem('darkMode', JSON.stringify(state.darkMode));
         document.documentElement.classList.add('dark');
       } else {
         document.documentElement.classList.remove('dark');
+        localStorage.setItem('darkMode', JSON.stringify(state.darkMode));
       }
     },
     setDarkMode: (state, action) => {
