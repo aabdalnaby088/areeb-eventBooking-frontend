@@ -15,7 +15,7 @@ export default function Home() {
         <div className="relative py-10 ">
           {/* ******************************************************* */}
           {/* Text Section */}
-          <h1 className=" max-md:text-[30px] max-md:leading-[35px] max-md:text-center text-[90px] font-extrabold text-[#1D2134] leading-[115px] flex-1">
+          <h1 className=" max-md:text-[30px] max-md:leading-[35px] max-md:text-center text-[90px] font-extrabold text-primary leading-[115px] flex-1">
             Find Amazing Events Happening in
           </h1>
           {/* ******************************************************* */}
@@ -33,7 +33,7 @@ export default function Home() {
 
         {/* second section with another video */}
         <div className="flex justify-evenly max-md:justify-center max-md:mx-auto items-center w-[60%] mt-[-30px] ms-[-40px]   ">
-          <h1 className="max-md:text-[30px]  text-[90px] font-extrabold text-[#1D2134]">Your</h1>
+          <h1 className="max-md:text-[30px]  text-[90px] font-extrabold text-primary">Your</h1>
 
           <div className=" max-md:hidden w-[250px] h-[110px] rounded-full overflow-hidden ml-5  ">
             <video autoPlay muted loop className="w-full h-full object-cover">
@@ -42,7 +42,7 @@ export default function Home() {
             </video>
           </div>
 
-          <h1 className=" max-md:text-[30px] text-[90px] font-extrabold text-[#1D2134]">City</h1>
+          <h1 className=" max-md:text-[30px] text-[90px] font-extrabold text-primary">City</h1>
         </div>
 
            <div className=" md:hidden mt-5 w-[300px] h-[110px] rounded-full overflow-hidden mx-auto ">
@@ -60,7 +60,7 @@ export default function Home() {
           {/* for the paragraph */}
 
           <div className="w-[55%] max-md:w-[100%]  max-md:text-center max-md:flex max-md:justify-center border-b-2 pb-5 ">
-          <p className=" text-[18px] text-[#353535] font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet felis sit amet nulla ultrices tincidunt. Proin porttitor, urna ac pretium pharetra, justo felis facilisis nulla, non blandit lorem turpis sed sapien. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices urna ac pretium pharetra, justo felis facilisis nulla, non blandit lorem turpis sed sapien. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices </p>
+          <p className=" text-[18px] text-secondary font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet felis sit amet nulla ultrices tincidunt. Proin porttitor, urna ac pretium pharetra, justo felis facilisis nulla, non blandit lorem turpis sed sapien. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices urna ac pretium pharetra, justo felis facilisis nulla, non blandit lorem turpis sed sapien. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices </p>
           </div>
 
           {/* for the tickets images */}
@@ -84,7 +84,7 @@ export default function Home() {
 
         <div className="  w-[55%] max-md:w-full mt-5 flex max-md:flex-col items-center max-md:text-center ">
 
-          <h3 className=" text-4xl max-md:text-3xl text-[#1D2134] font-extrabold ">Sponsors</h3>
+          <h3 className=" text-4xl max-md:text-3xl text-primary font-extrabold ">Sponsors</h3>
 
           {/* sponsors logos */}
 

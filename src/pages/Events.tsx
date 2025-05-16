@@ -45,7 +45,7 @@ export default function Events() {
       {hasMore && (
         <button 
           onClick={loadMore}
-          className="bg-[#1D2134] text-white rounded-xl text-center px-4 py-2 mb-6 cursor-pointer"
+          className="bg-primary text-bg rounded-xl text-center px-4 py-2 mb-6 cursor-pointer"
         >
           Load More Events
         </button>

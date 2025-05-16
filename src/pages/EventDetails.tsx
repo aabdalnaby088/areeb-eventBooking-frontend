@@ -33,7 +33,7 @@ const isInCart = useMemo(() => {
   return (
     <>
     
-      <div className="main w-[90%] mx-auto mt-12">
+      <div className="main w-[90%] mx-auto py-10">
         {/* iamge section  */}
         <div className="relative w-full h-[400px] max-md:h-[200px] rounded-2xl overflow-hidden">
           <img
@@ -45,13 +45,13 @@ const isInCart = useMemo(() => {
 
         {/* event category but foe small screens */}
            <div className=" md:hidden w-[40%] mx-auto mt-5">
-            <div className="bg-[#1D2134] text-white rounded-xl text-center  w-[100%]">
+            <div className="bg-primary text-bg rounded-xl text-center  w-[100%]">
               <h3 className=" text-[25px] font-medium max-md:px-3 max-md:py-2 px-6 py-4"> {data?.category} </h3>
             </div>
           </div>
 
           {/* **************** */}
-        <div className=" mt-10 max-md:mt-5 text-[#1D2134] flex justify-between border-b-2 pb-14 ">
+        <div className=" mt-10 max-md:mt-5 text-primary flex justify-between border-b-2 pb-14 ">
           {/* left section */}
           <div className=" ">
             <h2 className=" text-[40px] max-md:text-[30px] max-md:leading-[35px] font-bold"> {data?.name} </h2>
@@ -70,7 +70,7 @@ const isInCart = useMemo(() => {
               element.scrollIntoView({ behavior: "smooth" });
             }
             }}
-             className="flex items-center mt-7 gap-2 bg-[#1D2134] text-white text-[20px] font-medium px-6 py-4 rounded-full shadow-md hover:opacity-90 transition w-fit">
+             className="flex items-center mt-7 gap-2 bg-primary text-bg text-[20px] font-medium px-6 py-4 rounded-full shadow-md hover:opacity-90 transition w-fit">
               <Ticket size={35} />
              { isInCart ? 'Booked' : 'Book Now'}
             </button>
@@ -79,7 +79,7 @@ const isInCart = useMemo(() => {
 
           {/* right section for the category type  */}
           <div className=" max-md:hidden">
-            <div className="bg-[#1D2134] text-white rounded-xl">
+            <div className="bg-primary text-bg rounded-xl">
               <h3 className=" text-[25px] font-medium px-6 py-4">{data?.category}</h3>
             </div>
           </div>

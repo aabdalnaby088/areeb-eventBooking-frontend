@@ -63,7 +63,7 @@ const { mutate: removeFromcart, isPending: isRemoving } = useHandleCartQuantity(
         className="main max-md:w-[370px] max-md:h-[200px] w-[696px] h-[324px] rounded-2xl shadow-sm flex relative "
       >
         {/* ticket counter and buy button */}
-        <div className=" w-[40%] border-e-8 border-[#FAF9F6] border-dashed flex justify-center items-center flex-col ">
+        <div className=" w-[40%] border-e-8 border-bg border-dashed flex justify-center items-center flex-col ">
           <div className="flex items-center gap-6 max-md:gap-2 ">
             {/* Minus Button */}
             <button
@@ -81,7 +81,7 @@ const { mutate: removeFromcart, isPending: isRemoving } = useHandleCartQuantity(
               onClick={handleAddToCart}
               className=" max-md:w-6 max-md:h-6   w-10 h-10 flex items-center justify-center bg-white rounded-full cursor-pointer"
             >
-              { isAdding ? <Loader size={25} className="animate-spin" /> :<Plus size={22} className="text-[#1D2134]" />}
+              { isAdding ? <Loader size={25} className="animate-spin text-[#1D2134]" /> :<Plus size={22} className="text-[#1D2134]" />}
             </button>
           </div>
 
@@ -118,12 +118,12 @@ const { mutate: removeFromcart, isPending: isRemoving } = useHandleCartQuantity(
 
         {/* these are for the corners */}
 
-        <div className=" bg-[#FAF9F6] max-md:h-11 max-md:w-11  h-14 w-14 rounded-full absolute top-[-30px] max-md:left-[34%] left-[35.5%]"></div>
-        <div className=" bg-[#FAF9F6] max-md:h-11 max-md:w-11  h-14 w-14 rounded-full absolute  top-[300px] max-md:top-[185px] max-md:left-[34%] left-[35.5%]"></div>
-        <div className="  bg-[#FAF9F6] max-md:h-11 max-md:w-11  h-14 w-14 rounded-full absolute max-md:top-[180px] top-[290px] max-md:left-[92%] left-[94%]"></div>
-        <div className=" bg-[#FAF9F6]  max-md:h-11 max-md:w-11 h-14 w-14 rounded-full absolute top-[-20px] left-[94%]"></div>
-        <div className="  bg-[#FAF9F6]  max-md:h-11 max-md:w-11 h-14 w-14 rounded-full absolute top-[290px] max-md:top-[180px] right-[94%]"></div>
-        <div className=" bg-[#FAF9F6]  max-md:h-11 max-md:w-11 h-14 w-14 rounded-full absolute top-[-20px] right-[94%]"></div>
+        <div className=" bg-bg max-md:h-11 max-md:w-11  h-14 w-14 rounded-full absolute top-[-30px] max-md:left-[34%] left-[35.5%]"></div>
+        <div className=" bg-bg max-md:h-11 max-md:w-11  h-14 w-14 rounded-full absolute  top-[300px] max-md:top-[185px] max-md:left-[34%] left-[35.5%]"></div>
+        <div className="  bg-bg max-md:h-11 max-md:w-11  h-14 w-14 rounded-full absolute max-md:top-[180px] top-[290px] max-md:left-[92%] left-[94%]"></div>
+        <div className=" bg-bg  max-md:h-11 max-md:w-11 h-14 w-14 rounded-full absolute top-[-20px] left-[94%]"></div>
+        <div className="  bg-bg  max-md:h-11 max-md:w-11 h-14 w-14 rounded-full absolute top-[290px] max-md:top-[180px] right-[94%]"></div>
+        <div className=" bg-bg  max-md:h-11 max-md:w-11 h-14 w-14 rounded-full absolute top-[-20px] right-[94%]"></div>
       </div>
     </>
   );

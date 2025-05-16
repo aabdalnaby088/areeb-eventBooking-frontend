@@ -18,7 +18,7 @@ export default function CartCard( {event, deleteOption, quantity}:cartCardProps)
     removeFromcart(event._id);
   }
   return (
-    <div className=" max-md:w-[350px]  w-[420px] bg-white rounded-3xl border-2 border-[#1D2134] shadow-md p-4 pb-10 relative ">
+    <div className=" max-md:w-[350px]  w-[420px] bg-bg rounded-3xl border-2 border-primary shadow-md p-4 pb-10 relative ">
       {/* Event Image */}
       <Link to={`/event/${event._id}`} className="relative w-full h-[180px] rounded-[16px] overflow-hidden bg-black cursor-pointer">
         <img
@@ -32,11 +32,11 @@ export default function CartCard( {event, deleteOption, quantity}:cartCardProps)
       <div className="flex justify-between items-center mt-4">
         {/* Left Side */}
         <div className= {`${deleteOption ? 'w-2/3' : 'w-full'}`}>
-          <h3 className={`text-[20px] font-bold text-[#1D2134] line-clamp-1`}>
+          <h3 className={`text-[20px] font-bold text-primary line-clamp-1`}>
             {event.name}
           </h3>
-          <p className="text-[15px] text-[#1D2134] mt-2"> {date} </p>
-          <div className="flex items-center text-[15px] text-[#1D2134] mt-2">
+          <p className="text-[15px] text-primary mt-2"> {date} </p>
+          <div className="flex items-center text-[15px] text-primary mt-2">
             <MapPin size={20} className="mr-1" />
             {event.venue}
           </div>
@@ -44,8 +44,8 @@ export default function CartCard( {event, deleteOption, quantity}:cartCardProps)
 
         {/* Right Side */}
         { deleteOption && <div className="text-right">
-          <p className="text-[15px] text-[#1D2134] font-bold">Tickets: {quantity}</p>
-          <p className="text-[15px] text-[#1D2134] font-bold">Total Price:</p>
+          <p className="text-[15px] text-primary font-bold">Tickets: {quantity}</p>
+          <p className="text-[15px] text-primary font-bold">Total Price:</p>
           <p className="text-[15px] font-bold text-red-500">{calcPrice(quantity!, event.price)} EGP</p>
         </div>
       }

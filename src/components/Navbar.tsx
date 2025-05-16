@@ -6,11 +6,13 @@ import { useAppDispatch, useAppSelector } from '../hooks/redux.hooks';
 import { logoutUser } from '../redux/userSlice';
 import { useCart } from '../hooks/useCart';
 import styled from 'styled-components';
+import { toggleTheme } from '../redux/themeSlice';
 
 export default function Navbar() {
 const [isOpen, setIsOpen] = useState<boolean>(false);
 const [showLangDropdown, setShowLangDropdown] = useState<boolean>(false);
- const { user } = useAppSelector((state) => state.user);
+const { user } = useAppSelector((state) => state.user);
+ const darkMode = useAppSelector((state) => state.theme.darkMode);
 const dispatch = useAppDispatch();
 
 const [cartCount, setCartCount] = useState<number>(0);
@@ -26,24 +28,34 @@ useEffect(() => {
   }else{
     setCartCount(0);
   }
-}, [cart.data]);
+   const root = document.documentElement;
+    if (darkMode) {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+    console.log(darkMode, root.classList);
+    
+}, [cart.data, darkMode]);
 
 
   return (
-    <nav className="w-[95%] py-4 px-6 border-b-2">
+    <nav className="w-[95%] py-4 px-6 border-b-2 bg-bg">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
       
-        <Link to="/" className="text-2xl font-black text-[#1D2134] tracking-widest">
+        <Link
+        style={{ fontFamily: "'Bagel Fat One', sans-serif" }}
+         to="/" className="text-2xl font-black text-primary tracking-widest">
           BOOK EVENTS
         </Link>
 
         {/* Large screen Search Bar */}
-        <div className="flex-1 mx-6 hidden md:flex justify-center">
+        <div className="flex-1 mx-6 hidden md:flex justify-center text-primary">
           <div className="relative w-full max-w-md ">
             <input
               type="text"
               placeholder="Search Event"
-              className="w-full pl-10 pr-4 py-2 rounded-full shadow-lg border-1 text-[#4B4B4B] focus:outline-[#1D2134] "
+              className="w-full pl-10 pr-4 py-2 rounded-full shadow-lg border-1 text-primary focus:outline-primary "
             />
             <Search className="absolute left-3 top-2.5 text-gray-400" size={20} />
           </div>
@@ -53,10 +65,10 @@ useEffect(() => {
         <div className="hidden md:flex items-center space-x-4">
           { user ? 
           <>
-            <Link to="/events" className="text-[#4B4B4B] hover:text-black text-xl">
+            <Link to="/events" className="text-secondary hover:text-black text-xl">
            Events
           </Link> 
-            <Link to="/cart" className="text-[#4B4B4B] hover:text-black text-xl relative">
+            <Link to="/cart" className="text-secondary hover:text-black text-xl relative">
               <Tickets size={30} />
               <span className='absolute bottom-[60%] start-[80%] text-xs text-white bg-red-500 rounded-2xl px-1'>{cartCount}</span>
           </Link> 
@@ -64,16 +76,16 @@ useEffect(() => {
           
           : 
           <>
-           <Link to="/events" className="text-[#4B4B4B] hover:text-black text-xl">
+           <Link to="/events" className="text-secondary hover:text-black text-xl">
            Events
           </Link>
-          <Link to="/login" className="text-[#4B4B4B] hover:text-black text-xl">
-             <span className='px-4 py-2 rounded-xl shadow-lg border-1 text-[#FFF] bg-[#1D2134] focus:outline-[#1D2134] hover:bg-[#fff] hover:text-[#1D2134] transition-all duration-300'>
+          <Link to="/login" className="text-secondary hover:text-black text-xl">
+             <span className='px-4 py-2 rounded-xl shadow-lg border-1 text-[#FFF] bg-primary focus:outline-primary hover:bg-[#fff] hover:text-primary transition-all duration-300'>
               Login
             </span>
           </Link>
-          <Link to="/Signup" className="text-[#4B4B4B] hover:text-black text-xl">
-             <span className='px-4 py-2 rounded-xl shadow-lg border-1 text-[#FFF] bg-[#1D2134] focus:outline-[#1D2134] hover:bg-[#fff] hover:text-[#1D2134] transition-all duration-300'>
+          <Link to="/Signup" className="text-secondary hover:text-black text-xl">
+             <span className='px-4 py-2 rounded-xl shadow-lg border-1 text-[#FFF] bg-primary focus:outline-primary hover:bg-[#fff] hover:text-primary transition-all duration-300'>
               Signup
             </span>
           </Link>
@@ -85,7 +97,7 @@ useEffect(() => {
           <div className="relative">
             <button
               onClick={() => setShowLangDropdown(prev => !prev)}
-              className="text-[#4B4B4B] hover:text-black"
+              className="text-secondary hover:text-black"
             >
               <Globe size={30} />
             </button>
@@ -104,9 +116,9 @@ useEffect(() => {
 
           {/* night mode button here */}
 
-           <StyledWrapper>
+      <StyledWrapper>
       <label className="switch">
-        <input id="input" type="checkbox"  />
+        <input id="input" type="checkbox" onClick={() => dispatch(toggleTheme())} />
         <div className="slider round">
           <div className="sun-moon">
             <svg id="moon-dot-1" className="moon-dot" viewBox="0 0 100 100">
@@ -166,7 +178,7 @@ useEffect(() => {
 
 
           { user && <button onClick={() => dispatch(logoutUser())}>
-            <LogOut size={30} className="text-[#4B4B4B] hover:text-red-500 cursor-pointer" />
+            <LogOut size={30} className="text-secondary hover:text-red-500 cursor-pointer" />
           </button>}
         </div>
 
@@ -190,7 +202,7 @@ useEffect(() => {
             <input
               type="text"
               placeholder="Search Event"
-              className="w-full pl-10 pr-4 py-2 rounded-full shadow-lg border-1 text-[#4B4B4B] focus:outline-[#1D2134]"
+              className="w-full pl-10 pr-4 py-2 rounded-full shadow-lg border-1 text-secondary focus:outline-primary"
             />
             <Search className="absolute left-7 top-2.5 text-gray-400" size={18} />
           </div>
@@ -198,13 +210,13 @@ useEffect(() => {
 
 
           {/* Links */}
-          <div className="px-4 flex flex-col space-y-2 text-[#4B4B4B]">
+          <div className="px-4 flex flex-col space-y-2 text-secondary">
              { user ? 
           <>
-            <Link to="/events" className="text-[#4B4B4B] hover:text-black text-xl">
+            <Link to="/events" className="text-secondary hover:text-black text-xl">
            Events
           </Link> 
-            <Link to="/cart" className="text-[#4B4B4B] hover:text-black text-xl relative">
+            <Link to="/cart" className="text-secondary hover:text-black text-xl relative">
               <Tickets size={30} />
               <span className='absolute bottom-[60%] start-[10%] text-xs text-white bg-red-500 rounded-2xl px-1'>{cartCount}</span>
           </Link> 
@@ -212,16 +224,16 @@ useEffect(() => {
           
           : 
           <div className='flex flex-col gap-3'>
-           <Link to="/events" className="text-[#4B4B4B] hover:text-black text-xl">
+           <Link to="/events" className="text-secondary hover:text-black text-xl">
            Events
           </Link>
-          <Link to="/login" className="text-[#4B4B4B] hover:text-black text-sm">
-             <span className='px-2 py-1 rounded-xl shadow-lg border-1 text-[#FFF] bg-[#1D2134] focus:outline-[#1D2134] hover:bg-[#fff] hover:text-[#1D2134] transition-all duration-300'>
+          <Link to="/login" className="text-secondary hover:text-black text-sm">
+             <span className='px-2 py-1 rounded-xl shadow-lg border-1 text-[#FFF] bg-primary focus:outline-primary hover:bg-[#fff] hover:text-primary transition-all duration-300'>
               Login
             </span>
           </Link>
-          <Link to="/Signup" className="text-[#4B4B4B] hover:text-black text-sm">
-             <span className='px-2 py-1 rounded-xl shadow-lg border-1 text-[#FFF] bg-[#1D2134] focus:outline-[#1D2134] hover:bg-[#fff] hover:text-[#1D2134] transition-all duration-300'>
+          <Link to="/Signup" className="text-secondary hover:text-black text-sm">
+             <span className='px-2 py-1 rounded-xl shadow-lg border-1 text-[#FFF] bg-primary focus:outline-primary hover:bg-[#fff] hover:text-primary transition-all duration-300'>
               Signup
             </span>
           </Link>
@@ -232,6 +244,68 @@ useEffect(() => {
           </div>
 
           }
+
+      {/* night mode button here */}
+
+      <StyledWrapper>
+      <label className="switch">
+        <input id="input" type="checkbox" onClick={() => dispatch(toggleTheme())} />
+        <div className="slider round">
+          <div className="sun-moon">
+            <svg id="moon-dot-1" className="moon-dot" viewBox="0 0 100 100">
+              <circle cx={50} cy={50} r={50} />
+            </svg>
+            <svg id="moon-dot-2" className="moon-dot" viewBox="0 0 100 100">
+              <circle cx={50} cy={50} r={50} />
+            </svg>
+            <svg id="moon-dot-3" className="moon-dot" viewBox="0 0 100 100">
+              <circle cx={50} cy={50} r={50} />
+            </svg>
+            <svg id="light-ray-1" className="light-ray" viewBox="0 0 100 100">
+              <circle cx={50} cy={50} r={50} />
+            </svg>
+            <svg id="light-ray-2" className="light-ray" viewBox="0 0 100 100">
+              <circle cx={50} cy={50} r={50} />
+            </svg>
+            <svg id="light-ray-3" className="light-ray" viewBox="0 0 100 100">
+              <circle cx={50} cy={50} r={50} />
+            </svg>
+            <svg id="cloud-1" className="cloud-dark" viewBox="0 0 100 100">
+              <circle cx={50} cy={50} r={50} />
+            </svg>
+            <svg id="cloud-2" className="cloud-dark" viewBox="0 0 100 100">
+              <circle cx={50} cy={50} r={50} />
+            </svg>
+            <svg id="cloud-3" className="cloud-dark" viewBox="0 0 100 100">
+              <circle cx={50} cy={50} r={50} />
+            </svg>
+            <svg id="cloud-4" className="cloud-light" viewBox="0 0 100 100">
+              <circle cx={50} cy={50} r={50} />
+            </svg>
+            <svg id="cloud-5" className="cloud-light" viewBox="0 0 100 100">
+              <circle cx={50} cy={50} r={50} />
+            </svg>
+            <svg id="cloud-6" className="cloud-light" viewBox="0 0 100 100">
+              <circle cx={50} cy={50} r={50} />
+            </svg>
+          </div>
+          <div className="stars">
+            <svg id="star-1" className="star" viewBox="0 0 20 20">
+              <path d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z" />
+            </svg>
+            <svg id="star-2" className="star" viewBox="0 0 20 20">
+              <path d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z" />
+            </svg>
+            <svg id="star-3" className="star" viewBox="0 0 20 20">
+              <path d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z" />
+            </svg>
+            <svg id="star-4" className="star" viewBox="0 0 20 20">
+              <path d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z" />
+            </svg>
+          </div>
+        </div>
+      </label>
+    </StyledWrapper>
             
             {/* Language dropdown */}
             <div className="relative">
@@ -253,7 +327,7 @@ useEffect(() => {
             </div>
 
             <button className="flex items-center space-x-2 hover:text-black"  onClick={() => dispatch(logoutUser())}>
-              <LogOut size={30} className="text-[#4B4B4B] hover:text-red-500 cursor-pointer" />
+              <LogOut size={30} className="text-secondary hover:text-red-500 cursor-pointer" />
               <span>Logout</span>
             </button>
           </div>
