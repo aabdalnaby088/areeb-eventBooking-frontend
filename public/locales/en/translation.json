@@ -55,6 +55,7 @@
     "oops": "Oops! Page Not Found",
     "notFound": "NOT FOUND",
     "WeCannotSeem": "We can't seem to find the page you're looking for.",
-    "home": "Home"
+    "home": "Home",
+    "noResults": "No results found"
   }
 }
