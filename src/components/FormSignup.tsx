@@ -145,17 +145,17 @@ const FormSignup = () => {
 }
 
 const StyledWrapper = styled.div`
-width:100%;
-display:flex;
-justify-content:center;
-align-items:center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   .form {
     display: flex;
     flex-direction: column;
-
     gap: 10px;
     width: 30%;
-    max-width: 700px;
+    max-width: 800px;
     background-color: #fff;
     padding: 20px;
     border-radius: 20px;
@@ -173,7 +173,8 @@ align-items:center;
     padding-left: 30px;
   }
 
-  .title::before,.title::after {
+  .title::before,
+  .title::after {
     position: absolute;
     content: "";
     height: 16px;
@@ -195,13 +196,14 @@ align-items:center;
     animation: pulse 1s linear infinite;
   }
 
-  .error{
+  .error {
     color: red;
     font-size: 0.75rem;
     margin-top: 0.25rem;
   }
 
-  .message, .signin {
+  .message,
+  .signin {
     color: rgba(88, 87, 87, 0.822);
     font-size: 14px;
   }
@@ -234,6 +236,12 @@ align-items:center;
     outline: 0;
     border: 1px solid rgba(105, 105, 105, 0.397);
     border-radius: 10px;
+    color: #333;
+    background-color: #fff;
+  }
+
+  .form label .input::placeholder {
+    color: grey;
   }
 
   .form label .input + span {
@@ -249,9 +257,11 @@ align-items:center;
   .form label .input:placeholder-shown + span {
     top: 15px;
     font-size: 0.9em;
+    color: grey !important;
   }
 
-  .form label .input:focus + span,.form label .input:valid + span {
+  .form label .input:focus + span,
+  .form label .input:valid + span {
     top: 0px;
     font-size: 0.7em;
     font-weight: 600;
@@ -269,18 +279,54 @@ align-items:center;
     border-radius: 10px;
     color: #fff;
     font-size: 16px;
-    transform: .3s ease;
+    transform: 0.3s ease;
   }
 
   .submit:hover {
     background-color: rgb(56, 90, 194);
     cursor: pointer;
   }
+
+  @media (prefers-color-scheme: dark) {
+    .form {
+      background-color: #1a1a1a;
+    }
+
+    .form label .input {
+      color: #e0e0e0;
+      background-color: #333;
+      border-color: rgba(200, 200, 200, 0.3);
+    }
+
+    .form label .input::placeholder {
+      color: #aaa;
+    }
+
+    .form label .input + span {
+      color: #aaa;
+    }
+
+    .form label .input:placeholder-shown + span {
+      color: #aaa !important;
+    }
+
+    .form label .input:focus + span,
+    .form label .input:valid + span {
+      color: #4caf50;
+    }
+
+    .message,
+    .signin {
+      color: rgba(200, 200, 200, 0.8);
+    }
+  }
+
   @media only screen and (max-width: 700px) {
     .form {
       width: 80%;
     }
   }
+
   @keyframes pulse {
     from {
       transform: scale(0.9);
@@ -291,6 +337,7 @@ align-items:center;
       transform: scale(1.8);
       opacity: 0;
     }
-  }`;
+  }
+`;
 
 export default FormSignup;

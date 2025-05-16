@@ -113,7 +113,7 @@ useEffect(() => {
 
       <StyledWrapper>
       <label className="switch">
-        <input id="input" type="checkbox" onClick={() => dispatch(toggleTheme())} />
+        <input id="input" type="checkbox" checked={darkMode} onChange={() => dispatch(toggleTheme())} />
         <div className="slider round">
           <div className="sun-moon">
             <svg id="moon-dot-1" className="moon-dot" viewBox="0 0 100 100">
@@ -248,7 +248,7 @@ useEffect(() => {
 
       <StyledWrapper>
       <label className="switch">
-        <input id="input" type="checkbox" checked={darkMode} onClick={() => dispatch(toggleTheme())} />
+        <input id="input" type="checkbox" checked={darkMode} onChange={() => dispatch(toggleTheme())} />
         <div className="slider round">
           <div className="sun-moon">
             <svg id="moon-dot-1" className="moon-dot" viewBox="0 0 100 100">
